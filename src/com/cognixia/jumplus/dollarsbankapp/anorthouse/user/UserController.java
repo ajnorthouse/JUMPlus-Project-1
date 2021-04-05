@@ -64,4 +64,9 @@ public class UserController {
 		model.setLog(log);
 	}
 	
+	//view
+	public void updatView() {
+		view.printUserDetails(model.getUserId(), model.getName(), model.getContactNumber(), model.getBalance());
+	}
+	
 }
