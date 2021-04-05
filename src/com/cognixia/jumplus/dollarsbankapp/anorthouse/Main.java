@@ -4,7 +4,7 @@ package com.cognixia.jumplus.dollarsbankapp.anorthouse;
  * Hello world!
  *
  */
-public class App 
+public class Main 
 {
     public static void main( String[] args )
     {
