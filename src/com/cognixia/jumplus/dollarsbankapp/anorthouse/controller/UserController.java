@@ -1,6 +1,9 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse.user;
+package com.cognixia.jumplus.dollarsbankapp.anorthouse.controller;
 
 import java.util.ArrayList;
+
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.application.UserView;
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
 
 public class UserController {
 	private User model;

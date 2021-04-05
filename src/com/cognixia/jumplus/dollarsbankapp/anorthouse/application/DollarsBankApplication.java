@@ -1,10 +1,10 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse;
+package com.cognixia.jumplus.dollarsbankapp.anorthouse.application;
 
 /**
  * Hello world!
  *
  */
-public class Main 
+public class DollarsBankApplication 
 {
     public static void main( String[] args )
     {

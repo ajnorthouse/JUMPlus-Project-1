@@ -1,4 +1,4 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse.user;
+package com.cognixia.jumplus.dollarsbankapp.anorthouse.application;
 
 public class UserView {
 	public void printUserDetails(String userId, String name, String contactNumber, double balance) {
