@@ -1,13 +1,13 @@
 package com.cognixia.jumplus.dollarsbankapp.anorthouse.application;
 
-/**
- * Hello world!
- *
- */
-public class DollarsBankApplication 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.controller.UserController;
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
+
+public class DollarsBankApplication {
+	
+    public static void main( String[] args ) {
+    	User testUser = new User();
+    	UserController testController = new UserController(testUser, new UserView());
+    	testController.updateView();
+	}
 }

@@ -22,6 +22,12 @@ public class User {
 	public User() {
 		super();
 		id = currentID++;
+		userId = null;
+		password = null;
+		name = null;
+		contactNumber = null;
+		balance = 0.0;
+		log = null;
 	}
 	public User(String userId, String password, String name, String contactNumber, double balance) {
 		super();
