@@ -1,5 +1,9 @@
+#Eclipse Specific:
 /.classpath
 /.project
+/.settings/
+
+#Java Build:
 /bin/
 /target/
-/.settings/
+/build/
