@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class User {
 //	Class Variables
-	private static Long currentID = 1L;
+	private static Long currentID = 0L;
 	private Long id;
 	private String userId;
 	private String password;
@@ -22,15 +22,15 @@ public class User {
 	public User() {
 		super();
 		id = currentID++;
-		userId = "N/A";
-		password = "";
-		name = "N/A";
-		contactNumber = "N/A";
+		userId = null;
+		password = null;
+		name = null;
+		contactNumber = null;
 		balance = 0.0;
 		log = null;
 	}
 	public User(String userId, String password, String name, String contactNumber, double balance) {
-		this();
+		super();
 		this.userId = userId;
 		this.password = password;
 		this.name = name;
