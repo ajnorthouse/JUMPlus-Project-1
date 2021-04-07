@@ -1,6 +1,3 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse;
-
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
