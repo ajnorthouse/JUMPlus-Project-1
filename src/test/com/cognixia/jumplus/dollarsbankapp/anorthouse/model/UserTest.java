@@ -1,3 +1,5 @@
+package com.cognixia.jumplus.dollarsbankapp.anorthouse.model;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -5,8 +7,6 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
 
 @DisplayName("Test User Model")
 class UserTest {
