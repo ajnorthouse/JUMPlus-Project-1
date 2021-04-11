@@ -53,25 +53,24 @@ class UserControllerTest {
 		assertEquals(expected, actual);
 	}
 
-	@DisplayName("")
+	@DisplayName("Get Password")
 	@Test
 	final void testGetUserPassword() {
-		// TODO
-		Object expected = null;
-		Object actual = null;
+		String expected = "password";
+		String actual = testController.getUserPassword();
 		assertEquals(expected, actual);
 	}
 
-	@DisplayName("")
+	@DisplayName("Set Password")
 	@Test
 	final void testSetUserPassword() {
-		// TODO
-		Object expected = null;
-		Object actual = null;
+		String expected = "drowssap";
+		testController.setUserPassword(expected);
+		String actual = testController.getUserPassword();
 		assertEquals(expected, actual);
 	}
 
-	@DisplayName("")
+	@DisplayName("Get Name")
 	@Test
 	final void testGetUserName() {
 		// TODO
@@ -80,7 +79,7 @@ class UserControllerTest {
 		assertEquals(expected, actual);
 	}
 
-	@DisplayName("")
+	@DisplayName("Set Name")
 	@Test
 	final void testSetUserName() {
 		// TODO
@@ -89,7 +88,7 @@ class UserControllerTest {
 		assertEquals(expected, actual);
 	}
 
-	@DisplayName("")
+	@DisplayName("Get ContactNumber")
 	@Test
 	final void testGetUserContactNumber() {
 		// TODO
@@ -98,7 +97,7 @@ class UserControllerTest {
 		assertEquals(expected, actual);
 	}
 
-	@DisplayName("")
+	@DisplayName("Set ContactNumber")
 	@Test
 	final void testSetUserContactNumber() {
 		// TODO
@@ -107,7 +106,7 @@ class UserControllerTest {
 		assertEquals(expected, actual);
 	}
 
-	@DisplayName("")
+	@DisplayName("Get UserBalance")
 	@Test
 	final void testGetUserBalance() {
 		// TODO
@@ -116,7 +115,7 @@ class UserControllerTest {
 		assertEquals(expected, actual);
 	}
 
-	@DisplayName("")
+	@DisplayName("Set UserBalance")
 	@Test
 	final void testSetUserBalance() {
 		// TODO
@@ -125,7 +124,7 @@ class UserControllerTest {
 		assertEquals(expected, actual);
 	}
 
-	@DisplayName("")
+	@DisplayName("Get UserLog")
 	@Test
 	final void testGetUserLog() {
 		// TODO
@@ -134,7 +133,7 @@ class UserControllerTest {
 		assertEquals(expected, actual);
 	}
 
-	@DisplayName("")
+	@DisplayName("Set UserLog")
 	@Test
 	final void testSetUserLog() {
 		// TODO
@@ -143,7 +142,7 @@ class UserControllerTest {
 		assertEquals(expected, actual);
 	}
 
-	@DisplayName("")
+	@DisplayName("Test UpdateView()")
 	@Test
 	final void testUpdateView() {
 		// TODO
