@@ -111,8 +111,8 @@ class UserControllerTest {
 	@Test
 	final void testGetUserBalance() {
 		// TODO
-		Object expected = null;
-		Object actual = null;
+		Double expected = 100.0;
+		Double actual = testController.getUserBalance();
 		assertEquals(expected, actual);
 	}
 
@@ -120,8 +120,9 @@ class UserControllerTest {
 	@Test
 	final void testSetUserBalance() {
 		// TODO
-		Object expected = null;
-		Object actual = null;
+		Double expected = 200.0;
+		testController.setUserBalance(expected);
+		Double actual = testController.getUserBalance();
 		assertEquals(expected, actual);
 	}
 
