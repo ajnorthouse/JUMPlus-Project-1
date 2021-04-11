@@ -28,7 +28,7 @@ class UserControllerTest {
 		}
 	 */
 	
-	@DisplayName("")
+	@DisplayName("Get Id")
 	@Test
 	final void testGetUserId() {
 		Long expected = 1L;
@@ -36,21 +36,20 @@ class UserControllerTest {
 		assertEquals(expected, actual);
 	}
 
-	@DisplayName("")
+	@DisplayName("Get UserId")
 	@Test
 	final void testGetUserUserId() {
-		// TODO
-		Object expected = null;
-		Object actual = null;
+		String expected = "Foobar";
+		String actual = testController.getUserUserId();
 		assertEquals(expected, actual);
 	}
 
-	@DisplayName("")
+	@DisplayName("Set UserId")
 	@Test
 	final void testSetUserUserId() {
-		// TODO
-		Object expected = null;
-		Object actual = null;
+		String expected = "BarFoo";
+		testController.setUserUserId(expected);
+		String actual = testController.getUserUserId();
 		assertEquals(expected, actual);
 	}
 
