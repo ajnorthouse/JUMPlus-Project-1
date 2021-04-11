@@ -11,10 +11,8 @@ import org.junit.jupiter.api.Test;
 @DisplayName("Test User Model")
 class UserTest {
 	//class objects needed for testing
-	static User testGetUser = new User("Foobar", "password", 
-			"John Doe", "8885558888", 100.0);
-	static User testSetUser = new User("Foobar", "password", 
-			"John Doe", "8885558888", 100.0);
+	static User testGetUser = new User("Foobar", "password", "John Doe", "8885558888", 100.0);
+	static User testSetUser = new User("Foobar", "password", "John Doe", "8885558888", 100.0);
 	static User testDefaultUser = new User();
 	
 	@Nested
@@ -84,7 +82,7 @@ class UserTest {
 		@DisplayName("Get Id")
 		@Test
 		void testGetId() {
-			Long expected = 1L;
+			Long expected = 2L;
 			Long actual = testGetUser.getId();
 			assertEquals(expected, actual);
 		}
@@ -147,7 +145,7 @@ class UserTest {
 		void testDefaultConstructor() {
 			Boolean[] expected = {true, true, true, true, true, true, true};
 			Boolean[] actual = {
-					(testDefaultUser.getId() == 3), 
+					(testDefaultUser.getId() == 4), 
 					(testDefaultUser.getUserId() == "N/A"), 
 					(testDefaultUser.getPassword() == ""), 
 					(testDefaultUser.getName() == "N/A"), 
@@ -161,7 +159,7 @@ class UserTest {
 		@DisplayName("Auto Incrementing ID Test")
 		@Test
 		void testCurrentIdIncrement() {
-			assertEquals(4L, User.getCurrentID());
+			assertEquals(5L, User.getCurrentID());
 		}
 	}
 	
