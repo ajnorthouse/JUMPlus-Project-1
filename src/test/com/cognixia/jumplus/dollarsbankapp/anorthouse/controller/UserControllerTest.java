@@ -130,8 +130,8 @@ class UserControllerTest {
 	@Test
 	final void testGetUserLog() {
 		// TODO
-		Object expected = null;
-		Object actual = null;
+		ArrayList<String> expected = new ArrayList<String>();
+		ArrayList<String> actual = testController.getUserLog();
 		assertEquals(expected, actual);
 	}
 
@@ -139,8 +139,10 @@ class UserControllerTest {
 	@Test
 	final void testSetUserLog() {
 		// TODO
-		Object expected = null;
-		Object actual = null;
+		ArrayList<String> expected = new ArrayList<String>();
+		expected.add("Testy");
+		testController.setUserLog(expected);
+		ArrayList<String> actual = testController.getUserLog();
 		assertEquals(expected, actual);
 	}
 
@@ -154,30 +156,3 @@ class UserControllerTest {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
