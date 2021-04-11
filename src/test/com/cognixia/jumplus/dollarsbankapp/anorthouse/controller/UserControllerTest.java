@@ -73,18 +73,17 @@ class UserControllerTest {
 	@DisplayName("Get Name")
 	@Test
 	final void testGetUserName() {
-		// TODO
-		Object expected = null;
-		Object actual = null;
+		String expected = "John Doe";
+		String actual = testController.getUserName();
 		assertEquals(expected, actual);
 	}
 
 	@DisplayName("Set Name")
 	@Test
 	final void testSetUserName() {
-		// TODO
-		Object expected = null;
-		Object actual = null;
+		String expected = "Dane Smith";
+		testController.setUserName(expected);
+		String actual = testController.getUserName();
 		assertEquals(expected, actual);
 	}
 
