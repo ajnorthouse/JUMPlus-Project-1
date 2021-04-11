@@ -68,8 +68,8 @@ public class UserController {
 	}
 	
 	//view
-	public void updateView() {
-		view.printUserDetails(model);
+	public String updateView() {
+		return view.printUserDetails(model);
 	}
 	
 }

@@ -5,28 +5,17 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.application.UserView;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
 
+@DisplayName("Test User methods in Controller")
 class UserControllerTest {
 	//class objects for testing:
-	static User testGetUser = new User("Foobar", "password", "John Doe", "8885558888", 100.0);
+	static User testUser = new User("Foobar", "password", "John Doe", "8885558888", 100.0);
 	static UserView testView = new UserView();
-	static UserController testController = new UserController(testGetUser, testView);
-
-	/*
-		@DisplayName("Set User Id")
-		@Test
-		void testSetUserId() {
-			String expected = "BarFoo";
-			testSetUser.setUserId(expected);
-			String actual = testSetUser.getUserId();
-			assertEquals(expected, actual);
-		}
-	 */
+	static UserController testController = new UserController(testUser, testView);
 	
 	@DisplayName("Get Id")
 	@Test
@@ -90,7 +79,6 @@ class UserControllerTest {
 	@DisplayName("Get ContactNumber")
 	@Test
 	final void testGetUserContactNumber() {
-		// TODO
 		String expected = "8885558888";
 		testController.setUserContactNumber(expected);
 		String actual = testController.getUserContactNumber();
@@ -100,7 +88,6 @@ class UserControllerTest {
 	@DisplayName("Set ContactNumber")
 	@Test
 	final void testSetUserContactNumber() {
-		// TODO
 		String expected = "5558885555";
 		testController.setUserContactNumber(expected);
 		String actual = testController.getUserContactNumber();
@@ -110,7 +97,6 @@ class UserControllerTest {
 	@DisplayName("Get UserBalance")
 	@Test
 	final void testGetUserBalance() {
-		// TODO
 		Double expected = 100.0;
 		Double actual = testController.getUserBalance();
 		assertEquals(expected, actual);
@@ -119,7 +105,6 @@ class UserControllerTest {
 	@DisplayName("Set UserBalance")
 	@Test
 	final void testSetUserBalance() {
-		// TODO
 		Double expected = 200.0;
 		testController.setUserBalance(expected);
 		Double actual = testController.getUserBalance();
@@ -129,7 +114,6 @@ class UserControllerTest {
 	@DisplayName("Get UserLog")
 	@Test
 	final void testGetUserLog() {
-		// TODO
 		ArrayList<String> expected = new ArrayList<String>();
 		ArrayList<String> actual = testController.getUserLog();
 		assertEquals(expected, actual);
@@ -138,7 +122,6 @@ class UserControllerTest {
 	@DisplayName("Set UserLog")
 	@Test
 	final void testSetUserLog() {
-		// TODO
 		ArrayList<String> expected = new ArrayList<String>();
 		expected.add("Testy");
 		testController.setUserLog(expected);
@@ -149,9 +132,11 @@ class UserControllerTest {
 	@DisplayName("Test UpdateView()")
 	@Test
 	final void testUpdateView() {
-		// TODO
-		Object expected = null;
-		Object actual = null;
+		String expected = "User Details: \n"
+			+ "- Name: " + testUser.getUserId() +"\n"
+			+ "- Contact Number: " + testUser.getContactNumber() + "\n"
+			+ "- Balance: " + testUser.getBalance() + "\n";
+		Object actual = testController.updateView();
 		assertEquals(expected, actual);
 	}
 
