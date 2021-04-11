@@ -1,10 +1,19 @@
 package com.cognixia.jumplus.dollarsbankapp.anorthouse.application;
 
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
+
 public class UserView {
-	public void printUserDetails(String userId, String name, String contactNumber, double balance) {
-		System.out.println("User: ");
-		System.out.println("Name: " + userId);
-		System.out.println("Contact Number: " + contactNumber);
-		System.out.println("Balance: " + balance);
+	public String printUserDetails(User user) {
+		String message = "User Details: \n"
+				+ "- Name: " + user.getUserId() +"\n"
+				+ "- Contact Number: " + user.getContactNumber() + "\n"
+				+ "- Balance: " + user.getBalance() + "\n";
+		
+		printToConsole(message);
+		return message;
+	}
+	
+	private void printToConsole(String message) {
+		System.out.println(message);
 	}
 }
