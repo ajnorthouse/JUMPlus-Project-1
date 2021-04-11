@@ -1,4 +1,4 @@
-##Objectives:
+Objectives:
 1. Use layered architecture (abstracted files under SOLID principles) to make an MVC banking application.
 
 2. Create a user login system (no DB necessary, use in program memory).
