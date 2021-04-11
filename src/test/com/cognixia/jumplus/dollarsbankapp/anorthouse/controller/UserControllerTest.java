@@ -91,8 +91,9 @@ class UserControllerTest {
 	@Test
 	final void testGetUserContactNumber() {
 		// TODO
-		Object expected = null;
-		Object actual = null;
+		String expected = "8885558888";
+		testController.setUserContactNumber(expected);
+		String actual = testController.getUserContactNumber();
 		assertEquals(expected, actual);
 	}
 
@@ -100,8 +101,9 @@ class UserControllerTest {
 	@Test
 	final void testSetUserContactNumber() {
 		// TODO
-		Object expected = null;
-		Object actual = null;
+		String expected = "5558885555";
+		testController.setUserContactNumber(expected);
+		String actual = testController.getUserContactNumber();
 		assertEquals(expected, actual);
 	}
 
