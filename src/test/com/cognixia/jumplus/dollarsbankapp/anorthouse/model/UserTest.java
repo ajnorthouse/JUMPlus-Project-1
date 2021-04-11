@@ -16,30 +16,10 @@ class UserTest {
 	//class objects needed for testing
 	static User testUser = new User();
 
-	@DisplayName("Constructors")
-	@Nested
-	class constructors {
-
-		@DisplayName("Default Values Test")
-		@Test
-		void testDefaultConstructor() {
-			Boolean[] expected = {true, true, true, true, true, true};
-			Boolean[] actual = {
-					(testUser.getUserId() == "N/A"), 
-					(testUser.getPassword() == ""), 
-					(testUser.getName() == "N/A"), 
-					(testUser.getContactNumber() == "N/A"), 
-					(testUser.getBalance() == 0.0), 
-					(testUser.getLog() == null)
-			};
-			assertArrayEquals(expected, actual);
-		}
-
-		@DisplayName("Auto Incrementing ID Test")
-		@Test
-		void testCurrentIdIncrement() {
-			assertEquals(3L, User.getCurrentID());
-		}
+	@DisplayName("Auto Incrementing ID Test")
+	@Test
+	void testCurrentIdIncrement() {
+		assertEquals(3L, User.getCurrentID());
 	}
 
 	@DisplayName("Setter Methods")
