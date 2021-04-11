@@ -53,7 +53,7 @@ class UserControllerTest {
 	@DisplayName("Set Password")
 	@Test
 	final void testSetUserPassword() {
-		String expected = "drowssap";
+		String expected = "password";
 		testController.setUserPassword(expected);
 		String actual = testController.getUserPassword();
 		assertEquals(expected, actual);
@@ -62,7 +62,7 @@ class UserControllerTest {
 	@DisplayName("Get Name")
 	@Test
 	final void testGetUserName() {
-		String expected = "John Doe";
+		String expected = "Dane Smith";
 		String actual = testController.getUserName();
 		assertEquals(expected, actual);
 	}
@@ -97,7 +97,7 @@ class UserControllerTest {
 	@DisplayName("Get UserBalance")
 	@Test
 	final void testGetUserBalance() {
-		Double expected = 100.0;
+		Double expected = 200.0;
 		Double actual = testController.getUserBalance();
 		assertEquals(expected, actual);
 	}

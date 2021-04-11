@@ -23,9 +23,8 @@ class UserTest {
 		@DisplayName("Default Values Test")
 		@Test
 		void testDefaultConstructor() {
-			Boolean[] expected = {true, true, true, true, true, true, true};
+			Boolean[] expected = {true, true, true, true, true, true};
 			Boolean[] actual = {
-					(testUser.getId() == 2), 
 					(testUser.getUserId() == "N/A"), 
 					(testUser.getPassword() == ""), 
 					(testUser.getName() == "N/A"), 
