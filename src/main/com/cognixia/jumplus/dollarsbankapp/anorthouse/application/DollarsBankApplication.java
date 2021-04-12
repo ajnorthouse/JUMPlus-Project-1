@@ -117,6 +117,7 @@ public class DollarsBankApplication {
         		colorOut(COLOR.GREEN, "Please login on the Welcome screen.");
         		colorOut(COLOR.GREEN, "Returning to Welcome Screen...");
     		} else {
+        		colorOut(COLOR.RED, "UserId already taken! Please try again.");
         		colorOut(COLOR.RED, "Returning to Welcome Screen...");
     		}
     	}
