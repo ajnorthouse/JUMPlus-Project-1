@@ -78,7 +78,7 @@ public class UserController {
 	}
 	
 	//view
-	public String updateView() {
+	public String showUserInfo() {
 		return view.printUserDetails(model);
 	}
 

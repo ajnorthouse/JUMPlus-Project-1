@@ -289,7 +289,6 @@ public class DollarsBankApplication {
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "| View Last 5 Transactions  |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
-    	colorOut(COLOR.BLACK, "Listing last 5 transactions...");
     	loggedInUser.showLastTransactions(5);
     }
     
@@ -301,7 +300,7 @@ public class DollarsBankApplication {
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|    Display Information    |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
-    	colorOut(COLOR.BLACK, "");
+    	loggedInUser.showUserInfo();
     }
     
     /**
