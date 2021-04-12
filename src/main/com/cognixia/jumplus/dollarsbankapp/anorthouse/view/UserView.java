@@ -1,4 +1,4 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse.application;
+package com.cognixia.jumplus.dollarsbankapp.anorthouse.view;
 
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
 
