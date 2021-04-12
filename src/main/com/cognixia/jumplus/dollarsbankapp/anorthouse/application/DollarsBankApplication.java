@@ -12,6 +12,7 @@ public class DollarsBankApplication {
     public static void main( String[] args ) {
     	Scanner scanner = new Scanner(System.in);
     	welcomeScreen(scanner);
+	    scanner.close();
 	}
     
     
