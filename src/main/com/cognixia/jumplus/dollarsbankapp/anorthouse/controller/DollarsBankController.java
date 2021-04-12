@@ -14,12 +14,13 @@ public class DollarsBankController {
 	private User model;
 	private UserView modelView;
 	
+	// constructor
 	public DollarsBankController() {
 		this.model = null;
 		this.modelView = new UserView();
 	}
 	
-	//User / model
+	// model methods
 	public void setCurrentUser(User user) {
 		this.model = user;
 	}
@@ -63,12 +64,12 @@ public class DollarsBankController {
 		return true;
 	}
 	
-	//id
+	// id methods
 	public Long getUserId() {
 		return model.getId();
 	}
 	
-	//userId
+	// userId methods
 	public String getUserUserId() {
 		return model.getUserId();
 	}
@@ -76,7 +77,7 @@ public class DollarsBankController {
 		model.setUserId(userId);
 	}
 	
-	//password
+	// password methods
 	public String getUserPassword() {
 		return model.getPassword();
 	}
@@ -84,7 +85,7 @@ public class DollarsBankController {
 		model.setPassword(password);
 	}
 	
-	//name
+	// name methods
 	public String getUserName() {
 		return model.getName();
 	}
@@ -92,7 +93,7 @@ public class DollarsBankController {
 		model.setName(name);
 	}
 	
-	//contactNumber
+	// contactNumber methods
 	public String getUserContactNumber() {
 		return model.getContactNumber();
 	}
@@ -100,7 +101,7 @@ public class DollarsBankController {
 		model.setContactNumber(contactNumber);
 	}
 	
-	//balance
+	// balance methods
 	public double getUserBalance() {
 		return model.getBalance();
 	}
@@ -131,7 +132,6 @@ public class DollarsBankController {
 		String message = "Transfered $" + userInput + " to " + transferUserId + ", Balance now: $" + balance + ".";
 		updateLog(user, message);
 	}
-
 	public boolean attemptTransfer(String transferUserId, double amount) {
 		//temp user for the transfer
 		User tempUser = null;
@@ -158,7 +158,7 @@ public class DollarsBankController {
 		return true;
 	}
 	
-	//log
+	// log methods
 	public ArrayList<String> getUserLog() {
 		return model.getLog();
 	}
@@ -176,11 +176,10 @@ public class DollarsBankController {
 		user.setLog(tempLog);
 	}
 	
-	//view
+	// view methods
 	public String showUserInfo() {
 		return modelView.printUserDetails(model);
 	}
-
 	public void showLastTransactions(int numOfTransactions) {
 		// gets variables
 		ArrayList<String> log = model.getLog();
@@ -200,7 +199,6 @@ public class DollarsBankController {
 			System.out.println("");
 		}
 	}
-
 	public void colorOut(ANSI_FONT_COLOR color, String message) {
 		ColoredOutput.printAnsiText(color, message);
 	}

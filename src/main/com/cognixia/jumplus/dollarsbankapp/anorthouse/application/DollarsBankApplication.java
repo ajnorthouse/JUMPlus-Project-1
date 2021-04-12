@@ -8,23 +8,14 @@ import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.ColoredOutput.ANSI_FO
 public class DollarsBankApplication {
 	
 	static DollarsBankController loggedInUser = new DollarsBankController();
-	
-	
-	/**
-	 * 
-	 * @param args
-	 */
+    
     public static void main( String[] args ) {
     	Scanner scanner = new Scanner(System.in);
     	welcomeScreen(scanner);
 	}
     
+    
     // Menu Screens:
-    /**
-     * 
-     * @param scanner
-     * @param loggedInUser
-     */
     public static void welcomeScreen(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "| DOLLARSBANK Welcomes You! |");
@@ -47,62 +38,73 @@ public class DollarsBankApplication {
     	switch (userInput) {
 	    	case 1:
 	    		createNewAccount(scanner);
+	        	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "");
+	    		welcomeScreen(scanner);
 	    		break;
 	    	case 2:
 	    		loginScreen(scanner);
+	        	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "");
+	    		welcomeScreen(scanner);
 	    		break;
 	    	case 3:
-	    		loggedInUser.colorOut(ANSI_FONT_COLOR.GREEN, "Thank You! Restarting Application.");
+	    		loggedInUser.colorOut(ANSI_FONT_COLOR.GREEN, "Thank You for using Dollars Bank!");
 	    		break;
 	    	default:
-	    		loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "No option matching that input, Restarting Application.");
+	    		loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "No option matching that input, Restarting Welcome Screen.");
+	        	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "");
+	    		welcomeScreen(scanner);
     	}
     	
-    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "");
-		welcomeScreen(scanner);
     }
     
-    /**
-     * 
-     */
     public static void createNewAccount(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "| Enter New Account Details |");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
     	
-    	String[] userInput = new String[6];
+    	String[] userInput = new String[4];
+    	double amountInput = 0.00;
     	boolean encounterdError = false;
 		int counter = 0;
     	
-    	while (counter < 6 && !encounterdError) {
+    	while (counter < 5 && !encounterdError) {
     		
     		switch(counter) {
 	    		case 0:
 	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Customer Name:");
 	    			break;
 	    		case 1:
-//	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Customer Address:");
-	    			break;
-	    		case 2:
 	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Customer Contact Number:");
 	    			break;
-	    		case 3:
+	    		case 2:
 	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "User Id:");
 	    			break;
-	    		case 4:
+	    		case 3:
 	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Password:");
 	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Password:");
 	    			break;
-	    		case 5:
+	    		case 4:
 	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Initial Deposit Amount:");
 	    			break;
     		}
     		
-    		try {
-        		userInput[counter] = takeStringInput(scanner);
-    		} catch (Exception e) {
-        		encounterdError = true;
+    		
+    		//input cleaners
+    		if (counter == 4) {
+        		//specific test for the double
+        		try {
+        			amountInput = takeDoubleInput(scanner);
+        		} catch (Exception e) {
+            		encounterdError = true;
+        		}
+    		} else {
+    			//generic test for other inputs
+        		try {
+            		userInput[counter] = takeStringInput(scanner);
+        		} catch (Exception e) {
+            		encounterdError = true;
+        		}
     		}
     		
     		counter++;
@@ -112,7 +114,7 @@ public class DollarsBankApplication {
     		loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "There was an error with your inputs.");
     		loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "Returning to Welcome Screen...");
     	} else {
-    		if (loggedInUser.createUser(userInput[3], userInput[4], userInput[0], userInput[2], Double.parseDouble(userInput[5]))) {
+    		if (loggedInUser.createUser(userInput[2], userInput[3], userInput[0], userInput[1], amountInput)) {
         		loggedInUser.colorOut(ANSI_FONT_COLOR.GREEN, "Successfully created new account!");
         		loggedInUser.colorOut(ANSI_FONT_COLOR.GREEN, "Please login on the Welcome screen.");
         		loggedInUser.colorOut(ANSI_FONT_COLOR.GREEN, "Returning to Welcome Screen...");
@@ -123,9 +125,6 @@ public class DollarsBankApplication {
     	}
     }
     
-    /**
-     * 
-     */
     public static void loginScreen(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
@@ -168,10 +167,7 @@ public class DollarsBankApplication {
     		}
     	}
     }
-
-	/**
-     * 
-     */
+    
     public static void mainScreen(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
@@ -225,9 +221,6 @@ public class DollarsBankApplication {
     	
     }
     
-    /**
-     * 
-     */
     public static void depositAmount(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
@@ -253,9 +246,6 @@ public class DollarsBankApplication {
     	
     }
     
-    /**
-     * 
-     */
     public static void withdrawAmount(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
@@ -281,9 +271,6 @@ public class DollarsBankApplication {
     	
     }
     
-    /**
-     * 
-     */
     public static void fundsTransfer(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
@@ -333,9 +320,6 @@ public class DollarsBankApplication {
     	}
     }
     
-    /**
-     * 
-     */
     public static void recentTransactions(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
@@ -344,9 +328,6 @@ public class DollarsBankApplication {
     	loggedInUser.showLastTransactions(5);
     }
     
-    /**
-     * 
-     */
     public static void displayInformation(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
@@ -355,9 +336,6 @@ public class DollarsBankApplication {
     	loggedInUser.showUserInfo();
     }
     
-    /**
-     * 
-     */
     public static void signOut(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
@@ -366,7 +344,8 @@ public class DollarsBankApplication {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "Signing out... Thank you!");
     	loggedInUser.setCurrentUser(null);
     }
-
+    
+    
     
     // Helper Functions:
 	private static int takeIntInput(Scanner scanner) throws Exception {
@@ -390,6 +369,7 @@ public class DollarsBankApplication {
 		//returns parsed input
 		return tempInt;
 	}
+	
 	private static double takeDoubleInput(Scanner scanner) throws Exception {
 		String tempString = scanner.next();
 		double tempDouble = 0.00;
@@ -411,6 +391,7 @@ public class DollarsBankApplication {
 		//returns parsed input
 		return tempDouble;
 	}
+	
 	private static String takeStringInput(Scanner scanner) throws Exception {
 		String tempString = scanner.next();
 		

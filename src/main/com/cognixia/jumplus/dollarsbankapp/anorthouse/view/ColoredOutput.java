@@ -9,7 +9,7 @@ package com.cognixia.jumplus.dollarsbankapp.anorthouse.view;
  *
  */
 public class ColoredOutput {
-	
+	//Basic text ("foreground") fonts
 	public static enum ANSI_FONT_COLOR {
 		BLACK("\u001B[30m"),
 		RED("\u001B[31m"),
@@ -34,7 +34,8 @@ public class ColoredOutput {
 			this.value = value;
 		}
 	}
-	
+
+	//Basic background fonts
 	public static enum ANSI_BACKGROUND_COLOR {
 		BLACK("\u001B[40m"),
 		RED("\u001B[41m"),
@@ -59,9 +60,11 @@ public class ColoredOutput {
 			this.value = value;
 		}
 	}
-	
+
+	//Reset code for ANSI
 	public static String ANSI_RESET = "\u001B[0m";
 
+	//Basic implementation of combining ANSI and a string to console
 	public static void printAnsiText(ANSI_FONT_COLOR color, String message) {
 		System.out.println(color.value + message + ANSI_RESET);
 	}
