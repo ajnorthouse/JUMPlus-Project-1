@@ -59,6 +59,8 @@ public class DollarsBankApplication {
 	    		welcomeScreen(scanner);
 	    		break;
     	}
+    	
+		welcomeScreen(scanner);
     }
     
     /**
@@ -115,8 +117,6 @@ public class DollarsBankApplication {
     		colorOut(COLOR.GREEN, "Please login on the Welcome screen.");
     		colorOut(COLOR.GREEN, "Returning to Welcome Screen...");
     	}
-    	
-    	welcomeScreen(scanner);
     }
     
     /**
@@ -162,20 +162,58 @@ public class DollarsBankApplication {
         		colorOut(COLOR.RED, "Invalid Credentials. Try Again!!");
     		}
     	}
-    	
-    	//this is needed to return the system to the welcome screen
-    	welcomeScreen(scanner);
     }
 
 	/**
      * 
      */
     public static void mainScreen(Scanner scanner) {
-    	// TODO
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|        Home Screen        |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
-    	takeIntInput(scanner);
+    	colorOut(COLOR.BLACK, "1. Deposit Amount");
+    	colorOut(COLOR.BLACK, "1. Withdraw Amount");
+    	colorOut(COLOR.BLACK, "1. Funds Transfer");
+    	colorOut(COLOR.BLACK, "1. View 5 Last Transactions");
+    	colorOut(COLOR.BLACK, "1. Display Account Information");
+    	colorOut(COLOR.BLACK, "6. Sign Out\n");
+    	colorOut(COLOR.GREEN, "Enter Choice (1, 2, 3, 4, 5, or 6):");
+    	
+    	//checks input
+    	int userInput;
+    	try {
+    		userInput = takeIntInput(scanner);
+    	} catch (Error e) {
+    		colorOut(COLOR.RED, "Bad Input! Restarting Application.");
+    		userInput = 6;
+    	}
+    	
+    	//switch case on deciding where to send user based on input
+    	switch (userInput) {
+	    	case 1:
+	    		depositAmount(scanner);
+	    		mainScreen(scanner);
+	    		break;
+	    	case 2:
+	    		withdrawAmount(scanner);
+	    		mainScreen(scanner);
+	    		break;
+	    	case 3:
+	    		fundsTransfer(scanner);
+	    		mainScreen(scanner);
+	    		break;
+	    	case 4:
+	    		recentTransactions(scanner);
+	    		mainScreen(scanner);
+	    		break;
+	    	case 5:
+	    		displayInformation(scanner);
+	    		mainScreen(scanner);
+	    		break;
+	    	case 6:
+	    		break;
+    	}
+    	
     }
     
     /**
