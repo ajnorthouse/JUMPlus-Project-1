@@ -123,7 +123,6 @@ public class DollarsBankApplication {
      * 
      */
     public static void loginScreen(Scanner scanner) {
-    	// TODO
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|    Enter Login Details    |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
@@ -160,9 +159,7 @@ public class DollarsBankApplication {
         		colorOut(COLOR.GREEN, "Redirecting to Home Screen...");
         		mainScreen(scanner);
     		} else {
-        		colorOut(COLOR.GREEN, "Successfully created new account!");
-        		colorOut(COLOR.GREEN, "Please login on the Welcome screen.");
-        		colorOut(COLOR.GREEN, "Returning to Welcome Screen...");
+        		colorOut(COLOR.RED, "Invalid Credentials. Try Again!!");
     		}
     	}
     	
