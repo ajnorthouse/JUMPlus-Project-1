@@ -1,12 +1,12 @@
 package com.cognixia.jumplus.dollarsbankapp.anorthouse.view;
 
 /**
- * Class containing basic ANSI values to be used with System.out.println() statements.
- * 
- * The codes were found on: https://dev.to/awwsmm/coloured-terminal-output-with-java-57l3
- * by Andrew (https://dev.to/awwsmm)
+ * Class containing basic ANSI values to be used with System.out.println() statements. 
+ * <p>
+ * The codes were found in "Coloured Terminal Output with Java" by Andrew (he/him).
+ * <p>
  * @author Alexandre Northouse
- *
+ * @see <a href="https://dev.to/awwsmm/coloured-terminal-output-with-java-57l3">Coloured Terminal Output with Java</a>
  */
 public class ColoredOutput {
 	//Basic text ("foreground") fonts
