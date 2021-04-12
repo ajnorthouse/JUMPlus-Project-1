@@ -54,7 +54,7 @@ public class UserController {
 		
 		//then just creates the user
 		User newUser = new User(userId, password, name, contactNumber, balance);
-		updateLog(newUser, "");
+		updateLog(newUser, "Created Account with initial balance of: $" + balance + ".");
 		users.add(newUser);
 		
 		

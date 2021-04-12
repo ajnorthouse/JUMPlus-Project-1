@@ -17,6 +17,10 @@ public class DollarsBankApplication {
 	 */
     public static void main( String[] args ) {
     	Scanner scanner = new Scanner(System.in);
+
+    	System.out.println(0.00 < 0);
+    	System.out.println(0 < 0.00);
+    	
     	welcomeScreen(scanner);
 	}
     
@@ -39,7 +43,7 @@ public class DollarsBankApplication {
     	int userInput;
     	try {
     		userInput = takeIntInput(scanner);
-    	} catch (Error e) {
+    	} catch (Exception e) {
     		colorOut(COLOR.RED, "Bad Input! Restarting Application.");
     		userInput = 3;
     	}
@@ -53,13 +57,13 @@ public class DollarsBankApplication {
 	    		loginScreen(scanner);
 	    		break;
 	    	case 3:
-	    		welcomeScreen(scanner);
+	    		colorOut(COLOR.GREEN, "Thank You! Restarting Application.");
 	    		break;
 	    	default:
 	    		colorOut(COLOR.RED, "No option matching that input, Restarting Application.");
-	    		welcomeScreen(scanner);
     	}
     	
+    	colorOut(COLOR.BLACK, "");
 		welcomeScreen(scanner);
     }
     
@@ -67,6 +71,7 @@ public class DollarsBankApplication {
      * 
      */
     public static void createNewAccount(Scanner scanner) {
+    	colorOut(COLOR.BLUE, "");
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "| Enter New Account Details |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
@@ -82,7 +87,7 @@ public class DollarsBankApplication {
 	    	    	colorOut(COLOR.BLACK, "Customer Name:");
 	    			break;
 	    		case 1:
-	    	    	colorOut(COLOR.BLACK, "Customer Address:");
+//	    	    	colorOut(COLOR.BLACK, "Customer Address:");
 	    			break;
 	    		case 2:
 	    	    	colorOut(COLOR.BLACK, "Customer Contact Number:");
@@ -101,7 +106,7 @@ public class DollarsBankApplication {
     		
     		try {
         		userInput[counter] = takeStringInput(scanner);
-    		} catch (Error e) {
+    		} catch (Exception e) {
         		encounterdError = true;
     		}
     		
@@ -127,6 +132,7 @@ public class DollarsBankApplication {
      * 
      */
     public static void loginScreen(Scanner scanner) {
+    	colorOut(COLOR.BLUE, "");
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|    Enter Login Details    |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
@@ -139,7 +145,7 @@ public class DollarsBankApplication {
     	colorOut(COLOR.BLACK, "User Id:");
     	try {
     		userId = takeStringInput(scanner);
-    	} catch (Error e) {
+    	} catch (Exception e) {
     		encounteredError = true;
     	}
 
@@ -148,7 +154,7 @@ public class DollarsBankApplication {
         	colorOut(COLOR.BLACK, "Password:");
         	try {
         		password = takeStringInput(scanner);
-        	} catch (Error e) {
+        	} catch (Exception e) {
         		encounteredError = true;
         	}
     	}
@@ -172,6 +178,7 @@ public class DollarsBankApplication {
      * 
      */
     public static void mainScreen(Scanner scanner) {
+    	colorOut(COLOR.BLUE, "");
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|        Home Screen        |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
@@ -187,7 +194,7 @@ public class DollarsBankApplication {
     	int userInput;
     	try {
     		userInput = takeIntInput(scanner);
-    	} catch (Error e) {
+    	} catch (Exception e) {
     		colorOut(COLOR.RED, "Bad Input! Restarting Application.");
     		userInput = 6;
     	}
@@ -227,6 +234,7 @@ public class DollarsBankApplication {
      * 
      */
     public static void depositAmount(Scanner scanner) {
+    	colorOut(COLOR.BLUE, "");
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|       Deposit Amount      |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
@@ -237,7 +245,7 @@ public class DollarsBankApplication {
     	double userInput = 0.00;
     	try {
     		userInput = takeDoubleInput(scanner);
-    	} catch (Error e) {
+    	} catch (Exception e) {
     		colorOut(COLOR.RED, "Bad Input! Returning to Home Screen...");
     		encounteredError = true;
     	}
@@ -254,6 +262,7 @@ public class DollarsBankApplication {
      * 
      */
     public static void withdrawAmount(Scanner scanner) {
+    	colorOut(COLOR.BLUE, "");
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|      Withdraw Amount      |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
@@ -264,7 +273,7 @@ public class DollarsBankApplication {
     	double userInput = 0.00;
     	try {
     		userInput = takeDoubleInput(scanner);
-    	} catch (Error e) {
+    	} catch (Exception e) {
     		colorOut(COLOR.RED, "Bad Input! Returning to Home Screen...");
     		encounteredError = true;
     	}
@@ -281,6 +290,7 @@ public class DollarsBankApplication {
      * 
      */
     public static void fundsTransfer(Scanner scanner) {
+    	colorOut(COLOR.BLUE, "");
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|       Funds Transfer      |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
@@ -296,7 +306,7 @@ public class DollarsBankApplication {
     	//tests input
     	try {
     		transferUserId = takeStringInput(scanner);
-    	} catch(Error e) {
+    	} catch(Exception e) {
     		colorOut(COLOR.RED, "Bad Input for the other user's id!");
     		encounteredError = true;
     	}
@@ -307,7 +317,7 @@ public class DollarsBankApplication {
         	colorOut(COLOR.BLACK, "Enter ammount to transfer:");
         	try {
         		amount = takeDoubleInput(scanner);
-        	} catch(Error e) {
+        	} catch(Exception e) {
         		colorOut(COLOR.RED, "Bad Input for the amount to transfer!");
         		encounteredError = true;
         	}
@@ -321,11 +331,9 @@ public class DollarsBankApplication {
     		if (loggedInUser.attemptTransfer(transferUserId, amount)) {
         		colorOut(COLOR.GREEN, "Successfully transfered funds!");
         		colorOut(COLOR.GREEN, "Returning to Home Screen...");
-        		mainScreen(scanner);
     		} else {
         		colorOut(COLOR.RED, "Unable to find user with that User Id!");
         		colorOut(COLOR.RED, "Returning to Home Screen...");
-        		mainScreen(scanner);
     		}
     	}
     }
@@ -334,6 +342,7 @@ public class DollarsBankApplication {
      * 
      */
     public static void recentTransactions(Scanner scanner) {
+    	colorOut(COLOR.BLUE, "");
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "| View Last 5 Transactions  |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
@@ -344,6 +353,7 @@ public class DollarsBankApplication {
      * 
      */
     public static void displayInformation(Scanner scanner) {
+    	colorOut(COLOR.BLUE, "");
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|    Display Information    |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
@@ -354,6 +364,7 @@ public class DollarsBankApplication {
      * 
      */
     public static void signOut(Scanner scanner) {
+    	colorOut(COLOR.BLUE, "");
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|          Sign Out         |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
@@ -363,23 +374,66 @@ public class DollarsBankApplication {
 
     
     // Helper Functions:
-	private static int takeIntInput(Scanner scanner) {
-    	// TODO
-		// no negatives
-		//int userChoice = Integer.parseInt(scanner.nextLine());
-		return 3;
+	private static int takeIntInput(Scanner scanner) throws Exception {
+		String tempString = scanner.next();
+		int tempInt = 0;
+		
+		try {
+			//attempts to parse input
+			tempString = tempString.trim().toLowerCase();
+			tempInt = Integer.parseInt(tempString);
+
+			//then checks for non=negative
+			if (tempInt < 0) {
+				throw new Exception();
+			}
+		//throws generic exception to allow for caller to handle issue
+		} catch (Exception e) {
+			throw e;
+		}
+		
+		//returns parsed input
+		return tempInt;
 	}
-	private static double takeDoubleInput(Scanner scanner) {
-    	// TODO
-		// no negatives
-		//int userChoice = Integer.parseInt(scanner.nextLine());
-		return 10.0;
+	private static double takeDoubleInput(Scanner scanner) throws Exception {
+		String tempString = scanner.next();
+		double tempDouble = 0.00;
+		
+		try {
+			//attempts to parse input
+			tempString = tempString.trim().toLowerCase();
+			tempDouble = Double.parseDouble(tempString);
+
+			//then checks for non=negative
+			if (tempDouble < 0.00) {
+				throw new Exception();
+			}
+		//throws generic exception to allow for caller to handle issue
+		} catch (Exception e) {
+			throw e;
+		}
+		
+		//returns parsed input
+		return tempDouble;
 	}
-	private static String takeStringInput(Scanner scanner) {
-    	// TODO
-		// - no empty strings
-		//int userChoice = Integer.parseInt(scanner.nextLine());
-		return "foob";
+	private static String takeStringInput(Scanner scanner) throws Exception {
+		String tempString = scanner.next();
+		
+		try {
+			//attempts to parse input
+			tempString = tempString.trim().toLowerCase();
+			
+			//checks for empty string
+			if (tempString.equals("")) {
+				throw new Exception();
+			}
+		//throws generic exception to allow for caller to handle issue
+		} catch (Exception e) {
+			throw e;
+		}
+		
+		//returns parsed input
+		return tempString;
 	}
     private static void colorOut(COLOR color, String message) {
     	System.out.println(message);

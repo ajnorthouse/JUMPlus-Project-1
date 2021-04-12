@@ -4,18 +4,22 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.application.UserView;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
 
 @DisplayName("Test User methods in Controller")
 class UserControllerTest {
 	//class objects for testing:
 	static User testUser = new User("Foobar", "password", "John Doe", "8885558888", 100.0);
-	static UserView testView = new UserView();
-	static UserController testController = new UserController(testUser, testView);
+	static UserController testController = new UserController();
+	
+	@BeforeAll
+	static void setUp() {
+		testController.setCurrentUser(testUser);
+	}
 	
 	@DisplayName("Get Id")
 	@Test
@@ -136,7 +140,7 @@ class UserControllerTest {
 			+ "- Name: " + testUser.getUserId() +"\n"
 			+ "- Contact Number: " + testUser.getContactNumber() + "\n"
 			+ "- Balance: " + testUser.getBalance() + "\n";
-		Object actual = testController.updateView();
+		Object actual = testController.showUserInfo();
 		assertEquals(expected, actual);
 	}
 
