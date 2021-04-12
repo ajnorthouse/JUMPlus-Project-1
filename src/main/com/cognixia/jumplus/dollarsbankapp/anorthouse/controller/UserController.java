@@ -58,6 +58,10 @@ public class UserController {
 	public void setUserBalance(double balance) {
 		model.setBalance(balance);
 	}
+	public void addDeposit(double userInput) {
+		double balance = model.getBalance() + userInput;
+		model.setBalance(balance);
+	}
 	
 	//log
 	public ArrayList<String> getUserLog() {
@@ -71,5 +75,6 @@ public class UserController {
 	public String updateView() {
 		return view.printUserDetails(model);
 	}
+
 	
 }

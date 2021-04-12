@@ -224,7 +224,24 @@ public class DollarsBankApplication {
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|       Deposit Amount      |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
-    	takeIntInput(scanner);
+    	colorOut(COLOR.BLACK, "Amount to be Deposited:");
+    	
+    	//checks input
+    	boolean encounteredError = false;
+    	double userInput = 0.00;
+    	try {
+    		userInput = takeDoubleInput(scanner);
+    	} catch (Error e) {
+    		colorOut(COLOR.RED, "Bad Input! Returning to Home Screen...");
+    		encounteredError = true;
+    	}
+    	
+    	//logic
+    	if (!encounteredError) {
+    		loggedInUser.addDeposit(userInput);
+    		colorOut(COLOR.GREEN, "Deposited " + userInput + " into your account!");
+    	}
+    	
     }
     
     /**
@@ -235,6 +252,7 @@ public class DollarsBankApplication {
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|      Withdraw Amount      |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLACK, "");
     	takeIntInput(scanner);
     }
     
@@ -246,6 +264,7 @@ public class DollarsBankApplication {
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|       Funds Transfer      |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLACK, "");
     	takeIntInput(scanner);
     }
     
@@ -257,6 +276,7 @@ public class DollarsBankApplication {
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "| View Last 5 Transactions  |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLACK, "");
     }
     
     /**
@@ -267,6 +287,7 @@ public class DollarsBankApplication {
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|    Display Information    |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLACK, "");
     }
     
     /**
@@ -277,6 +298,7 @@ public class DollarsBankApplication {
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|          Sign Out         |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLACK, "");
     }
 
     // Helper Functions:
@@ -296,6 +318,7 @@ public class DollarsBankApplication {
 		return "foob";
 	}
     private static boolean attemptLogin(String userId, String password) {
+    	colorOut(COLOR.BLACK, "");
 		// TODO Auto-generated method stub
 		return false;
 	}
