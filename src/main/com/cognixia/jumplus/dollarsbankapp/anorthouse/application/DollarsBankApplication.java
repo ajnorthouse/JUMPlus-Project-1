@@ -10,7 +10,7 @@ public class DollarsBankApplication {
 	
 	static ArrayList<User> users = new ArrayList<User>();
 	static UserController loggedInUser = new UserController(null, new UserView());
-	enum Color {
+	enum COLOR {
 		RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, BLACK
 	}
 	
@@ -30,20 +30,20 @@ public class DollarsBankApplication {
      * @param loggedInUser
      */
     public static void welcomeScreen(Scanner scanner) {
-    	colorOut(Color.BLUE, "+---------------------------+");
-    	colorOut(Color.BLUE, "| DOLLARSBANK Welcomes You! |");
-    	colorOut(Color.BLUE, "+---------------------------+");
-    	colorOut(Color.BLACK, "1. Create New Account");
-    	colorOut(Color.BLACK, "2. Login");
-    	colorOut(Color.BLACK, "3. Exit\n");
-    	colorOut(Color.GREEN, "Enter Choice (1, 2, or 3):");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "| DOLLARSBANK Welcomes You! |");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLACK, "1. Create New Account");
+    	colorOut(COLOR.BLACK, "2. Login");
+    	colorOut(COLOR.BLACK, "3. Exit\n");
+    	colorOut(COLOR.GREEN, "Enter Choice (1, 2, or 3):");
     	
     	
     	int userInput;
     	try {
     		userInput = takeIntInput(scanner);
     	} catch (Error e) {
-    		colorOut(Color.RED, "Bad Input! Restarting Application.");
+    		colorOut(COLOR.RED, "Bad Input! Restarting Application.");
     		userInput = 3;
     	}
     	
@@ -65,9 +65,9 @@ public class DollarsBankApplication {
      * 
      */
     public static void createNewAccount(Scanner scanner) {
-    	colorOut(Color.BLUE, "+---------------------------+");
-    	colorOut(Color.BLUE, "| Enter New Account Details |");
-    	colorOut(Color.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "| Enter New Account Details |");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
     	
     	String[] userInput = new String[6];
     	boolean encounterdError = false;
@@ -77,23 +77,23 @@ public class DollarsBankApplication {
     		
     		switch(counter) {
 	    		case 0:
-	    	    	colorOut(Color.BLACK, "Customer Name:");
+	    	    	colorOut(COLOR.BLACK, "Customer Name:");
 	    			break;
 	    		case 1:
-	    	    	colorOut(Color.BLACK, "Customer Address:");
+	    	    	colorOut(COLOR.BLACK, "Customer Address:");
 	    			break;
 	    		case 2:
-	    	    	colorOut(Color.BLACK, "Customer Contact Number:");
+	    	    	colorOut(COLOR.BLACK, "Customer Contact Number:");
 	    			break;
 	    		case 3:
-	    	    	colorOut(Color.BLACK, "User Id:");
+	    	    	colorOut(COLOR.BLACK, "User Id:");
 	    			break;
 	    		case 4:
-	    	    	colorOut(Color.BLACK, "Password:");
-	    	    	colorOut(Color.BLACK, "Password:");
+	    	    	colorOut(COLOR.BLACK, "Password:");
+	    	    	colorOut(COLOR.BLACK, "Password:");
 	    			break;
 	    		case 5:
-	    	    	colorOut(Color.BLACK, "Initial Deposit Amount:");
+	    	    	colorOut(COLOR.BLACK, "Initial Deposit Amount:");
 	    			break;
     		}
     		
@@ -107,13 +107,13 @@ public class DollarsBankApplication {
     	}
     	
     	if (encounterdError) {
-    		colorOut(Color.RED, "There was an error with your inputs.");
-    		colorOut(Color.RED, "Returning to Welcome Screen...");
+    		colorOut(COLOR.RED, "There was an error with your inputs.");
+    		colorOut(COLOR.RED, "Returning to Welcome Screen...");
     	} else {
     		users.add(new User(userInput[3], userInput[4], userInput[0], userInput[2], Double.parseDouble(userInput[5])));
-    		colorOut(Color.GREEN, "Successfully created new account!");
-    		colorOut(Color.GREEN, "Please login on the Welcome screen.");
-    		colorOut(Color.GREEN, "Returning to Welcome Screen...");
+    		colorOut(COLOR.GREEN, "Successfully created new account!");
+    		colorOut(COLOR.GREEN, "Please login on the Welcome screen.");
+    		colorOut(COLOR.GREEN, "Returning to Welcome Screen...");
     	}
     	
     	welcomeScreen(scanner);
@@ -124,20 +124,60 @@ public class DollarsBankApplication {
      */
     public static void loginScreen(Scanner scanner) {
     	// TODO
-    	colorOut(Color.BLUE, "+---------------------------+");
-    	colorOut(Color.BLUE, "|    Enter Login Details    |");
-    	colorOut(Color.BLUE, "+---------------------------+");
-    	takeStringInput(scanner);
+    	colorOut(COLOR.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "|    Enter Login Details    |");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
+
+    	//temp variables
+    	boolean encounteredError = false;
+    	String userId = null, password = null;
+
+    	//takes userId input
+    	colorOut(COLOR.BLACK, "User Id:");
+    	try {
+    		userId = takeStringInput(scanner);
+    	} catch (Error e) {
+    		encounteredError = true;
+    	}
+
+    	//checks for error, then takes password input if no errors
+    	if (!encounteredError) {
+        	colorOut(COLOR.BLACK, "Password:");
+        	try {
+        		password = takeStringInput(scanner);
+        	} catch (Error e) {
+        		encounteredError = true;
+        	}
+    	}
+    	
+    	//checks for any errors, then attempts to login user or return to welcome screen
+    	if (encounteredError) {
+    		colorOut(COLOR.RED, "There was an error with your inputs.");
+    		colorOut(COLOR.RED, "Returning to Welcome Screen...");
+    	} else {
+    		if (attemptLogin(userId, password)) {
+        		colorOut(COLOR.GREEN, "Successfully logged in!");
+        		colorOut(COLOR.GREEN, "Redirecting to Home Screen...");
+        		mainScreen(scanner);
+    		} else {
+        		colorOut(COLOR.GREEN, "Successfully created new account!");
+        		colorOut(COLOR.GREEN, "Please login on the Welcome screen.");
+        		colorOut(COLOR.GREEN, "Returning to Welcome Screen...");
+    		}
+    	}
+    	
+    	//this is needed to return the system to the welcome screen
+    	welcomeScreen(scanner);
     }
 
-    /**
+	/**
      * 
      */
     public static void mainScreen(Scanner scanner) {
     	// TODO
-    	colorOut(Color.BLUE, "+---------------------------+");
-    	colorOut(Color.BLUE, "|        Home Screen        |");
-    	colorOut(Color.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "|        Home Screen        |");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
     	takeIntInput(scanner);
     }
     
@@ -146,9 +186,9 @@ public class DollarsBankApplication {
      */
     public static void depositAmount(Scanner scanner) {
     	// TODO
-    	colorOut(Color.BLUE, "+---------------------------+");
-    	colorOut(Color.BLUE, "|       Deposit Amount      |");
-    	colorOut(Color.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "|       Deposit Amount      |");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
     	takeIntInput(scanner);
     }
     
@@ -157,9 +197,9 @@ public class DollarsBankApplication {
      */
     public static void withdrawAmount(Scanner scanner) {
     	// TODO
-    	colorOut(Color.BLUE, "+---------------------------+");
-    	colorOut(Color.BLUE, "|      Withdraw Amount      |");
-    	colorOut(Color.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "|      Withdraw Amount      |");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
     	takeIntInput(scanner);
     }
     
@@ -168,9 +208,9 @@ public class DollarsBankApplication {
      */
     public static void fundsTransfer(Scanner scanner) {
     	// TODO
-    	colorOut(Color.BLUE, "+---------------------------+");
-    	colorOut(Color.BLUE, "|       Funds Transfer      |");
-    	colorOut(Color.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "|       Funds Transfer      |");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
     	takeIntInput(scanner);
     }
     
@@ -179,9 +219,9 @@ public class DollarsBankApplication {
      */
     public static void recentTransactions(Scanner scanner) {
     	// TODO
-    	colorOut(Color.BLUE, "+---------------------------+");
-    	colorOut(Color.BLUE, "| View Last 5 Transactions  |");
-    	colorOut(Color.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "| View Last 5 Transactions  |");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
     }
     
     /**
@@ -189,9 +229,9 @@ public class DollarsBankApplication {
      */
     public static void displayInformation(Scanner scanner) {
     	// TODO
-    	colorOut(Color.BLUE, "+---------------------------+");
-    	colorOut(Color.BLUE, "|    Display Information    |");
-    	colorOut(Color.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "|    Display Information    |");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
     }
     
     /**
@@ -199,9 +239,9 @@ public class DollarsBankApplication {
      */
     public static void signOut(Scanner scanner) {
     	// TODO
-    	colorOut(Color.BLUE, "+---------------------------+");
-    	colorOut(Color.BLUE, "|          Sign Out         |");
-    	colorOut(Color.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
+    	colorOut(COLOR.BLUE, "|          Sign Out         |");
+    	colorOut(COLOR.BLUE, "+---------------------------+");
     }
 
     // Helper Functions:
@@ -220,7 +260,11 @@ public class DollarsBankApplication {
 		//int userChoice = Integer.parseInt(scanner.nextLine());
 		return "foob";
 	}
-    private static void colorOut(Color color, String message) {
+    private static boolean attemptLogin(String userId, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+    private static void colorOut(COLOR color, String message) {
     	System.out.println(message);
     }
 }
