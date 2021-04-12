@@ -1,5 +1,8 @@
 package com.cognixia.jumplus.dollarsbankapp.anorthouse.model;
 
+import java.text.SimpleDateFormat;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 /**
  * 
@@ -37,6 +40,11 @@ public class User {
 		this.contactNumber = contactNumber;
 		this.balance = balance;
 		this.log = new ArrayList<String>();
+		
+//		//adds to log:
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, MMM dd yyyy - HH:mm:ss z"); 
+//		this.log.add(ZonedDateTime.now().format(formatter) + ":"
+//				+ "Initial Deposit Amount of " + balance + " in account [" + userId + "]");
 	}
 	
 	
