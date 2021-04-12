@@ -1,14 +1,12 @@
 package com.cognixia.jumplus.dollarsbankapp.anorthouse.application;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.controller.UserController;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
 
 public class DollarsBankApplication {
 	
-	static UserController loggedInUser = new UserController(null, new UserView());
+	static UserController loggedInUser = new UserController();
 	enum COLOR {
 		RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, BLACK
 	}
@@ -57,6 +55,9 @@ public class DollarsBankApplication {
 	    	case 3:
 	    		welcomeScreen(scanner);
 	    		break;
+	    	default:
+	    		colorOut(COLOR.RED, "No option matching that input, Restarting Application.");
+	    		welcomeScreen(scanner);
     	}
     	
 		welcomeScreen(scanner);
@@ -111,10 +112,13 @@ public class DollarsBankApplication {
     		colorOut(COLOR.RED, "There was an error with your inputs.");
     		colorOut(COLOR.RED, "Returning to Welcome Screen...");
     	} else {
-    		loggedInUser.createUser(userInput[3], userInput[4], userInput[0], userInput[2], Double.parseDouble(userInput[5]));
-    		colorOut(COLOR.GREEN, "Successfully created new account!");
-    		colorOut(COLOR.GREEN, "Please login on the Welcome screen.");
-    		colorOut(COLOR.GREEN, "Returning to Welcome Screen...");
+    		if (loggedInUser.createUser(userInput[3], userInput[4], userInput[0], userInput[2], Double.parseDouble(userInput[5]))) {
+        		colorOut(COLOR.GREEN, "Successfully created new account!");
+        		colorOut(COLOR.GREEN, "Please login on the Welcome screen.");
+        		colorOut(COLOR.GREEN, "Returning to Welcome Screen...");
+    		} else {
+        		colorOut(COLOR.RED, "Returning to Welcome Screen...");
+    		}
     	}
     }
     
@@ -211,6 +215,9 @@ public class DollarsBankApplication {
 	    		break;
 	    	case 6:
 	    		break;
+	    	default:
+	    		colorOut(COLOR.RED, "No option matching that input, restarting Home Screen...");
+	    		mainScreen(scanner);
     	}
     	
     }
@@ -346,23 +353,26 @@ public class DollarsBankApplication {
     	colorOut(COLOR.BLUE, "|          Sign Out         |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.RED, "Signing out... Thank you!");
-    	loggedInUser.setUser(null);
+    	loggedInUser.setCurrentUser(null);
     }
 
     
     // Helper Functions:
 	private static int takeIntInput(Scanner scanner) {
     	// TODO
+		// no negatives
 		//int userChoice = Integer.parseInt(scanner.nextLine());
 		return 3;
 	}
 	private static double takeDoubleInput(Scanner scanner) {
     	// TODO
+		// no negatives
 		//int userChoice = Integer.parseInt(scanner.nextLine());
 		return 10.0;
 	}
 	private static String takeStringInput(Scanner scanner) {
     	// TODO
+		// - no empty strings
 		//int userChoice = Integer.parseInt(scanner.nextLine());
 		return "foob";
 	}
