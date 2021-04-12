@@ -220,7 +220,6 @@ public class DollarsBankApplication {
      * 
      */
     public static void depositAmount(Scanner scanner) {
-    	// TODO
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|       Deposit Amount      |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
@@ -248,7 +247,6 @@ public class DollarsBankApplication {
      * 
      */
     public static void withdrawAmount(Scanner scanner) {
-    	// TODO
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|      Withdraw Amount      |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
@@ -288,7 +286,6 @@ public class DollarsBankApplication {
      * 
      */
     public static void recentTransactions(Scanner scanner) {
-    	// TODO
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "| View Last 5 Transactions  |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
