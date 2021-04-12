@@ -322,6 +322,10 @@ public class DollarsBankApplication {
         		colorOut(COLOR.GREEN, "Successfully transfered funds!");
         		colorOut(COLOR.GREEN, "Returning to Home Screen...");
         		mainScreen(scanner);
+    		} else {
+        		colorOut(COLOR.RED, "Unable to find user with that User Id!");
+        		colorOut(COLOR.RED, "Returning to Home Screen...");
+        		mainScreen(scanner);
     		}
     	}
     }
