@@ -5,7 +5,7 @@ package com.cognixia.jumplus.dollarsbankapp.anorthouse.view;
  * 
  * The codes were found on: https://dev.to/awwsmm/coloured-terminal-output-with-java-57l3
  * by Andrew (https://dev.to/awwsmm)
- * @author alexn
+ * @author Alexandre Northouse
  *
  */
 public class ColoredOutput {

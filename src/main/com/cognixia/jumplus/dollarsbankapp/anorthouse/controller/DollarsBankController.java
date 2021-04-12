@@ -9,12 +9,12 @@ import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.ColoredOutput;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.ColoredOutput.ANSI_FONT_COLOR;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.UserView;
 
-public class UserController {
+public class DollarsBankController {
 	static ArrayList<User> users = new ArrayList<User>();
 	private User model;
 	private UserView modelView;
 	
-	public UserController() {
+	public DollarsBankController() {
 		this.model = null;
 		this.modelView = new UserView();
 	}
@@ -30,7 +30,7 @@ public class UserController {
 		for (int counter = 0; counter < users.size(); counter++) {
 			
 			//checks for matching userId
-			if (users.get(counter).getUserId().equals(userId)) {
+			if (users.get(counter).getUserId().toLowerCase().equals(userId.toLowerCase())) {
 				
 				//then checks if the passwords are equal
 				if (users.get(counter).getPassword().equals(password)) {
@@ -140,7 +140,7 @@ public class UserController {
 		for (int counter = 0; counter < users.size(); counter++) {
 			
 			//stops loop if a matching userId is found
-			if (users.get(counter).getUserId().equals(transferUserId)) {
+			if (users.get(counter).getUserId().toLowerCase().equals(transferUserId.toLowerCase())) {
 				tempUser = users.get(counter);
 				break;
 			}
@@ -152,8 +152,8 @@ public class UserController {
 		}
 		
 		//subtracts withdrawl and then adds deposit
-		subtractWithdraw(model, tempUser.getUserId(), amount);
-		addDeposit(tempUser, model.getUserId(), amount);
+		subtractWithdraw(model, tempUser.getUserId().toLowerCase(), amount);
+		addDeposit(tempUser, model.getUserId().toLowerCase(), amount);
 		
 		return true;
 	}

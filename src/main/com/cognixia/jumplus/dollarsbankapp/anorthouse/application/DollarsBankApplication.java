@@ -2,12 +2,12 @@ package com.cognixia.jumplus.dollarsbankapp.anorthouse.application;
 
 import java.util.Scanner;
 
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.controller.UserController;
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.controller.DollarsBankController;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.ColoredOutput.ANSI_FONT_COLOR;
 
 public class DollarsBankApplication {
 	
-	static UserController loggedInUser = new UserController();
+	static DollarsBankController loggedInUser = new DollarsBankController();
 	
 	
 	/**
