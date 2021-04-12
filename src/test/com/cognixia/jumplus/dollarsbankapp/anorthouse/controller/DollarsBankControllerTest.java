@@ -11,10 +11,10 @@ import org.junit.jupiter.api.Test;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
 
 @DisplayName("Test User methods in Controller")
-class UserControllerTest {
+class DollarsBankControllerTest {
 	//class objects for testing:
 	static User testUser = new User("Foobar", "password", "John Doe", "8885558888", 100.0);
-	static UserController testController = new UserController();
+	static DollarsBankController testController = new DollarsBankController();
 	
 	@BeforeAll
 	static void setUp() {

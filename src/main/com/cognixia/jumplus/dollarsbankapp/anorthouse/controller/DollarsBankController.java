@@ -4,20 +4,23 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.application.UserView;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.ColoredOutput;
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.ColoredOutput.ANSI_FONT_COLOR;
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.UserView;
 
-public class UserController {
+public class DollarsBankController {
 	static ArrayList<User> users = new ArrayList<User>();
 	private User model;
-	private UserView view;
+	private UserView modelView;
 	
-	public UserController() {
+	// constructor
+	public DollarsBankController() {
 		this.model = null;
-		this.view = new UserView();
+		this.modelView = new UserView();
 	}
 	
-	//User / model
+	// model methods
 	public void setCurrentUser(User user) {
 		this.model = user;
 	}
@@ -28,7 +31,7 @@ public class UserController {
 		for (int counter = 0; counter < users.size(); counter++) {
 			
 			//checks for matching userId
-			if (users.get(counter).getUserId().equals(userId)) {
+			if (users.get(counter).getUserId().toLowerCase().equals(userId.toLowerCase())) {
 				
 				//then checks if the passwords are equal
 				if (users.get(counter).getPassword().equals(password)) {
@@ -61,12 +64,12 @@ public class UserController {
 		return true;
 	}
 	
-	//id
+	// id methods
 	public Long getUserId() {
 		return model.getId();
 	}
 	
-	//userId
+	// userId methods
 	public String getUserUserId() {
 		return model.getUserId();
 	}
@@ -74,7 +77,7 @@ public class UserController {
 		model.setUserId(userId);
 	}
 	
-	//password
+	// password methods
 	public String getUserPassword() {
 		return model.getPassword();
 	}
@@ -82,7 +85,7 @@ public class UserController {
 		model.setPassword(password);
 	}
 	
-	//name
+	// name methods
 	public String getUserName() {
 		return model.getName();
 	}
@@ -90,7 +93,7 @@ public class UserController {
 		model.setName(name);
 	}
 	
-	//contactNumber
+	// contactNumber methods
 	public String getUserContactNumber() {
 		return model.getContactNumber();
 	}
@@ -98,7 +101,7 @@ public class UserController {
 		model.setContactNumber(contactNumber);
 	}
 	
-	//balance
+	// balance methods
 	public double getUserBalance() {
 		return model.getBalance();
 	}
@@ -129,7 +132,6 @@ public class UserController {
 		String message = "Transfered $" + userInput + " to " + transferUserId + ", Balance now: $" + balance + ".";
 		updateLog(user, message);
 	}
-
 	public boolean attemptTransfer(String transferUserId, double amount) {
 		//temp user for the transfer
 		User tempUser = null;
@@ -138,7 +140,7 @@ public class UserController {
 		for (int counter = 0; counter < users.size(); counter++) {
 			
 			//stops loop if a matching userId is found
-			if (users.get(counter).getUserId().equals(transferUserId)) {
+			if (users.get(counter).getUserId().toLowerCase().equals(transferUserId.toLowerCase())) {
 				tempUser = users.get(counter);
 				break;
 			}
@@ -150,13 +152,13 @@ public class UserController {
 		}
 		
 		//subtracts withdrawl and then adds deposit
-		subtractWithdraw(model, tempUser.getUserId(), amount);
-		addDeposit(tempUser, model.getUserId(), amount);
+		subtractWithdraw(model, tempUser.getUserId().toLowerCase(), amount);
+		addDeposit(tempUser, model.getUserId().toLowerCase(), amount);
 		
 		return true;
 	}
 	
-	//log
+	// log methods
 	public ArrayList<String> getUserLog() {
 		return model.getLog();
 	}
@@ -174,11 +176,10 @@ public class UserController {
 		user.setLog(tempLog);
 	}
 	
-	//view
+	// view methods
 	public String showUserInfo() {
-		return view.printUserDetails(model);
+		return modelView.printUserDetails(model);
 	}
-
 	public void showLastTransactions(int numOfTransactions) {
 		// gets variables
 		ArrayList<String> log = model.getLog();
@@ -198,7 +199,8 @@ public class UserController {
 			System.out.println("");
 		}
 	}
-
-
+	public void colorOut(ANSI_FONT_COLOR color, String message) {
+		ColoredOutput.printAnsiText(color, message);
+	}
 
 }

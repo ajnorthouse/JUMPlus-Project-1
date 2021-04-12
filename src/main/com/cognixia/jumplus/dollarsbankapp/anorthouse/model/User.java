@@ -1,13 +1,9 @@
 package com.cognixia.jumplus.dollarsbankapp.anorthouse.model;
 
 import java.util.ArrayList;
-/**
- * 
- * @author alexn
- *
- */
+
 public class User {
-//	Class Variables
+	// Class Variables
 	private static Long currentID = 1L;
 	private Long id;
 	private String userId;
@@ -18,7 +14,7 @@ public class User {
 	private ArrayList<String> log;
 	
 	
-//	Constructors
+	// Constructors
 	public User() {
 		super();
 		id = currentID++;
@@ -40,7 +36,7 @@ public class User {
 	}
 	
 	
-//	Getters
+	// Getters
 	public static Long getCurrentID() {
 		return currentID;
 	}
@@ -67,7 +63,7 @@ public class User {
 	}
 	
 	
-//	Setters
+	// Setters
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
