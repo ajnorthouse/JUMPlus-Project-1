@@ -17,7 +17,7 @@ public class DollarsBankApplication {
     
     
     // Menu Screens:
-    public static void welcomeScreen(Scanner scanner) {
+    private static void welcomeScreen(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "| DOLLARSBANK Welcomes You! |");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
@@ -58,7 +58,7 @@ public class DollarsBankApplication {
     	
     }
     
-    public static void createNewAccount(Scanner scanner) {
+    private static void createNewAccount(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "| Enter New Account Details |");
@@ -126,7 +126,7 @@ public class DollarsBankApplication {
     	}
     }
     
-    public static void loginScreen(Scanner scanner) {
+    private static void loginScreen(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "|    Enter Login Details    |");
@@ -169,7 +169,7 @@ public class DollarsBankApplication {
     	}
     }
     
-    public static void mainScreen(Scanner scanner) {
+    private static void mainScreen(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "|        Home Screen        |");
@@ -214,6 +214,7 @@ public class DollarsBankApplication {
 	    		mainScreen(scanner);
 	    		break;
 	    	case 6:
+	    		signOut(scanner);
 	    		break;
 	    	default:
 	    		loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "No option matching that input, restarting Home Screen...");
@@ -222,7 +223,7 @@ public class DollarsBankApplication {
     	
     }
     
-    public static void depositAmount(Scanner scanner) {
+    private static void depositAmount(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "|       Deposit Amount      |");
@@ -247,7 +248,7 @@ public class DollarsBankApplication {
     	
     }
     
-    public static void withdrawAmount(Scanner scanner) {
+    private static void withdrawAmount(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "|      Withdraw Amount      |");
@@ -272,7 +273,7 @@ public class DollarsBankApplication {
     	
     }
     
-    public static void fundsTransfer(Scanner scanner) {
+    private static void fundsTransfer(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "|       Funds Transfer      |");
@@ -321,7 +322,7 @@ public class DollarsBankApplication {
     	}
     }
     
-    public static void recentTransactions(Scanner scanner) {
+    private static void recentTransactions(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "| View Last 5 Transactions  |");
@@ -329,7 +330,7 @@ public class DollarsBankApplication {
     	loggedInUser.showLastTransactions(5);
     }
     
-    public static void displayInformation(Scanner scanner) {
+    private static void displayInformation(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "|    Display Information    |");
@@ -337,7 +338,7 @@ public class DollarsBankApplication {
     	loggedInUser.showUserInfo();
     }
     
-    public static void signOut(Scanner scanner) {
+    private static void signOut(Scanner scanner) {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "|          Sign Out         |");
@@ -349,7 +350,7 @@ public class DollarsBankApplication {
     
     
     // Helper Functions:
-	private static int takeIntInput(Scanner scanner) throws Exception {
+	public static int takeIntInput(Scanner scanner) throws Exception {
 		String tempString = scanner.next();
 		int tempInt = 0;
 		
@@ -371,7 +372,7 @@ public class DollarsBankApplication {
 		return tempInt;
 	}
 	
-	private static double takeDoubleInput(Scanner scanner) throws Exception {
+	public static double takeDoubleInput(Scanner scanner) throws Exception {
 		String tempString = scanner.next();
 		double tempDouble = 0.00;
 		
@@ -393,7 +394,7 @@ public class DollarsBankApplication {
 		return tempDouble;
 	}
 	
-	private static String takeStringInput(Scanner scanner) throws Exception {
+	public static String takeStringInput(Scanner scanner) throws Exception {
 		String tempString = scanner.next();
 		
 		try {
