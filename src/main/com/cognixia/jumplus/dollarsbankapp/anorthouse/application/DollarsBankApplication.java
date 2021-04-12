@@ -9,9 +9,6 @@ import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
 public class DollarsBankApplication {
 	
 	static ArrayList<User> users = new ArrayList<User>();
-	public enum inputOptions {
-		NUMBER, DOUBLE, STRING
-	}
 	
 	/**
 	 * 
@@ -37,7 +34,28 @@ public class DollarsBankApplication {
     	System.out.println("2. Login");
     	System.out.println("3. Exit\n");
     	System.out.println("Enter Choice (1, 2, or 3):");
-    	takeInput(scanner, inputOptions.NUMBER);
+    	
+    	
+    	int userInput;
+    	try {
+    		userInput = takeIntInput(scanner);
+    	} catch (Error e) {
+    		System.out.println("Bad Input! Restarting Application.");
+    		userInput = 3;
+    	}
+    	
+    	
+    	switch (userInput) {
+	    	case 1:
+	    		createNewAccount(scanner, loggedInUser);
+	    		break;
+	    	case 2:
+	    		loginScreen(scanner, loggedInUser);
+	    		break;
+	    	case 3:
+	    		welcomeScreen(scanner, loggedInUser);
+	    		break;
+    	}
     }
     
     /**
@@ -48,7 +66,7 @@ public class DollarsBankApplication {
     	System.out.println("+---------------------------+");
     	System.out.println("| Enter New Account Details |");
     	System.out.println("+---------------------------+");
-    	takeInput(scanner, inputOptions.NUMBER);
+    	takeStringInput(scanner);
     }
     
     /**
@@ -59,7 +77,7 @@ public class DollarsBankApplication {
     	System.out.println("+---------------------------+");
     	System.out.println("|    Enter Login Details    |");
     	System.out.println("+---------------------------+");
-    	takeInput(scanner, inputOptions.NUMBER);
+    	takeStringInput(scanner);
     }
 
     /**
@@ -70,7 +88,7 @@ public class DollarsBankApplication {
     	System.out.println("+---------------------------+");
     	System.out.println("|        Home Screen        |");
     	System.out.println("+---------------------------+");
-    	takeInput(scanner, inputOptions.NUMBER);
+    	takeIntInput(scanner);
     }
     
     /**
@@ -81,7 +99,7 @@ public class DollarsBankApplication {
     	System.out.println("+---------------------------+");
     	System.out.println("|       Deposit Amount      |");
     	System.out.println("+---------------------------+");
-    	takeInput(scanner, inputOptions.NUMBER);
+    	takeIntInput(scanner);
     }
     
     /**
@@ -92,7 +110,7 @@ public class DollarsBankApplication {
     	System.out.println("+---------------------------+");
     	System.out.println("|      Withdraw Amount      |");
     	System.out.println("+---------------------------+");
-    	takeInput(scanner, inputOptions.NUMBER);
+    	takeIntInput(scanner);
     }
     
     /**
@@ -103,7 +121,7 @@ public class DollarsBankApplication {
     	System.out.println("+---------------------------+");
     	System.out.println("|       Funds Transfer      |");
     	System.out.println("+---------------------------+");
-    	takeInput(scanner, inputOptions.NUMBER);
+    	takeIntInput(scanner);
     }
     
     /**
@@ -114,7 +132,6 @@ public class DollarsBankApplication {
     	System.out.println("+---------------------------+");
     	System.out.println("| View Last 5 Transactions  |");
     	System.out.println("+---------------------------+");
-    	takeInput(scanner, inputOptions.NUMBER);
     }
     
     /**
@@ -125,7 +142,6 @@ public class DollarsBankApplication {
     	System.out.println("+---------------------------+");
     	System.out.println("|    Display Information    |");
     	System.out.println("+---------------------------+");
-    	takeInput(scanner, inputOptions.NUMBER);
     }
     
     /**
@@ -136,13 +152,23 @@ public class DollarsBankApplication {
     	System.out.println("+---------------------------+");
     	System.out.println("|          Sign Out         |");
     	System.out.println("+---------------------------+");
-    	takeInput(scanner, inputOptions.NUMBER);
     }
 
     // Helper Functions:
-	private static void takeInput(Scanner scanner, inputOptions inputType) {
+	private static int takeIntInput(Scanner scanner) {
     	// TODO
 		//int userChoice = Integer.parseInt(scanner.nextLine());
+		return 3;
+	}
+	private static double takeDoubleInput(Scanner scanner) {
+    	// TODO
+		//int userChoice = Integer.parseInt(scanner.nextLine());
+		return 10.0;
+	}
+	private static String takeStringInput(Scanner scanner) {
+    	// TODO
+		//int userChoice = Integer.parseInt(scanner.nextLine());
+		return "foob";
 	}
     
 }
