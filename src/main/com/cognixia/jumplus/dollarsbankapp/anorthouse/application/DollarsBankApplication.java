@@ -296,7 +296,6 @@ public class DollarsBankApplication {
      * 
      */
     public static void displayInformation(Scanner scanner) {
-    	// TODO
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|    Display Information    |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
@@ -307,11 +306,11 @@ public class DollarsBankApplication {
      * 
      */
     public static void signOut(Scanner scanner) {
-    	// TODO
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|          Sign Out         |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
-    	colorOut(COLOR.BLACK, "");
+    	colorOut(COLOR.RED, "Signing out... Thank you!");
+    	loggedInUser.setUser(null);
     }
 
     // Helper Functions:

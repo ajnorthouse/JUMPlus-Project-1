@@ -14,6 +14,11 @@ public class UserController {
 		this.view = view;
 	}
 	
+	//User / model
+	public void setUser(User user) {
+		this.model = user;
+	}
+	
 	//id
 	public Long getUserId() {
 		return model.getId();
