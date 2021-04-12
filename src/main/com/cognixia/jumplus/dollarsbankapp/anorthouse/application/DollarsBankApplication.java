@@ -8,7 +8,6 @@ import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
 
 public class DollarsBankApplication {
 	
-	static ArrayList<User> users = new ArrayList<User>();
 	static UserController loggedInUser = new UserController(null, new UserView());
 	enum COLOR {
 		RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, BLACK
@@ -112,7 +111,7 @@ public class DollarsBankApplication {
     		colorOut(COLOR.RED, "There was an error with your inputs.");
     		colorOut(COLOR.RED, "Returning to Welcome Screen...");
     	} else {
-    		users.add(new User(userInput[3], userInput[4], userInput[0], userInput[2], Double.parseDouble(userInput[5])));
+    		loggedInUser.createUser(userInput[3], userInput[4], userInput[0], userInput[2], Double.parseDouble(userInput[5]));
     		colorOut(COLOR.GREEN, "Successfully created new account!");
     		colorOut(COLOR.GREEN, "Please login on the Welcome screen.");
     		colorOut(COLOR.GREEN, "Returning to Welcome Screen...");
@@ -274,7 +273,6 @@ public class DollarsBankApplication {
      * 
      */
     public static void fundsTransfer(Scanner scanner) {
-    	// TODO
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|       Funds Transfer      |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
