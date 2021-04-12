@@ -154,7 +154,7 @@ public class DollarsBankApplication {
     		colorOut(COLOR.RED, "There was an error with your inputs.");
     		colorOut(COLOR.RED, "Returning to Welcome Screen...");
     	} else {
-    		if (attemptLogin(userId, password)) {
+    		if (loggedInUser.attemptLogin(userId, password)) {
         		colorOut(COLOR.GREEN, "Successfully logged in!");
         		colorOut(COLOR.GREEN, "Redirecting to Home Screen...");
         		mainScreen(scanner);
@@ -278,8 +278,46 @@ public class DollarsBankApplication {
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|       Funds Transfer      |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
-    	colorOut(COLOR.BLACK, "");
-    	takeIntInput(scanner);
+    	colorOut(COLOR.BLACK, "Enter UserId of User to transfer funds to:");
+    	
+    	
+    	//sets up variables
+    	String transferUserId = null;
+    	double amount = 0.00;
+    	boolean encounteredError = false;
+    	
+    	
+    	//tests input
+    	try {
+    		transferUserId = takeStringInput(scanner);
+    	} catch(Error e) {
+    		colorOut(COLOR.RED, "Bad Input for the other user's id!");
+    		encounteredError = true;
+    	}
+    	
+    	
+    	//takes second input if no errors already
+    	if (!encounteredError) {
+        	colorOut(COLOR.BLACK, "Enter ammount to transfer:");
+        	try {
+        		amount = takeDoubleInput(scanner);
+        	} catch(Error e) {
+        		colorOut(COLOR.RED, "Bad Input for the amount to transfer!");
+        		encounteredError = true;
+        	}
+    	}
+    	
+    	
+    	//checks for any errors, then attempts to login user or return to welcome screen
+    	if (encounteredError) {
+    		colorOut(COLOR.RED, "Returning to Home Screen...");
+    	} else {
+    		if (loggedInUser.attemptTransfer(transferUserId, amount)) {
+        		colorOut(COLOR.GREEN, "Successfully transfered funds!");
+        		colorOut(COLOR.GREEN, "Returning to Home Screen...");
+        		mainScreen(scanner);
+    		}
+    	}
     }
     
     /**
@@ -313,6 +351,7 @@ public class DollarsBankApplication {
     	loggedInUser.setUser(null);
     }
 
+    
     // Helper Functions:
 	private static int takeIntInput(Scanner scanner) {
     	// TODO
@@ -328,11 +367,6 @@ public class DollarsBankApplication {
     	// TODO
 		//int userChoice = Integer.parseInt(scanner.nextLine());
 		return "foob";
-	}
-    private static boolean attemptLogin(String userId, String password) {
-    	colorOut(COLOR.BLACK, "");
-		// TODO Auto-generated method stub
-		return false;
 	}
     private static void colorOut(COLOR color, String message) {
     	System.out.println(message);
