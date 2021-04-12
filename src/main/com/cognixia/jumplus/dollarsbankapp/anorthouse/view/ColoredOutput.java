@@ -7,6 +7,7 @@ package com.cognixia.jumplus.dollarsbankapp.anorthouse.view;
  * <p>
  * @author Alexandre Northouse
  * @see <a href="https://dev.to/awwsmm/coloured-terminal-output-with-java-57l3">Coloured Terminal Output with Java</a>
+ * @see <a href="https://github.com/fusesource/jansi">JANSi Maven Project</a>
  */
 public class ColoredOutput {
 	//Basic text ("foreground") fonts
