@@ -9,7 +9,7 @@ import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
 public class DollarsBankApplication {
 	
 	static ArrayList<User> users = new ArrayList<User>();
-	static UserController loggedInUser = new UserController(new User(), new UserView());
+	static UserController loggedInUser = new UserController(null, new UserView());
 	enum Color {
 		RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE, BLACK
 	}
@@ -110,6 +110,7 @@ public class DollarsBankApplication {
     		colorOut(Color.RED, "There was an error with your inputs.");
     		colorOut(Color.RED, "Returning to Welcome Screen...");
     	} else {
+    		users.add(new User(userInput[3], userInput[4], userInput[0], userInput[2], Double.parseDouble(userInput[5])));
     		colorOut(Color.GREEN, "Successfully created new account!");
     		colorOut(Color.GREEN, "Please login on the Welcome screen.");
     		colorOut(Color.GREEN, "Returning to Welcome Screen...");
