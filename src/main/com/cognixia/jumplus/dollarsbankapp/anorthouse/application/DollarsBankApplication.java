@@ -252,8 +252,24 @@ public class DollarsBankApplication {
     	colorOut(COLOR.BLUE, "+---------------------------+");
     	colorOut(COLOR.BLUE, "|      Withdraw Amount      |");
     	colorOut(COLOR.BLUE, "+---------------------------+");
-    	colorOut(COLOR.BLACK, "");
-    	takeIntInput(scanner);
+    	colorOut(COLOR.BLACK, "Amount to be Deposited:");
+    	
+    	//checks input
+    	boolean encounteredError = false;
+    	double userInput = 0.00;
+    	try {
+    		userInput = takeDoubleInput(scanner);
+    	} catch (Error e) {
+    		colorOut(COLOR.RED, "Bad Input! Returning to Home Screen...");
+    		encounteredError = true;
+    	}
+    	
+    	//logic
+    	if (!encounteredError) {
+    		loggedInUser.subtractWithdraw(userInput);
+    		colorOut(COLOR.GREEN, "Withdrew " + userInput + " from your account!");
+    	}
+    	
     }
     
     /**

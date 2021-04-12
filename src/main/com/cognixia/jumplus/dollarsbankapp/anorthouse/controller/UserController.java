@@ -61,6 +61,12 @@ public class UserController {
 	public void addDeposit(double userInput) {
 		double balance = model.getBalance() + userInput;
 		model.setBalance(balance);
+		// TODO update log
+	}
+	public void subtractWithdraw(double userInput) {
+		double balance = model.getBalance() - userInput;
+		model.setBalance(balance);
+		// TODO update log
 	}
 	
 	//log
@@ -75,6 +81,7 @@ public class UserController {
 	public String updateView() {
 		return view.printUserDetails(model);
 	}
+
 
 	
 }
