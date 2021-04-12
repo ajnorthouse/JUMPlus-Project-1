@@ -17,10 +17,6 @@ public class DollarsBankApplication {
 	 */
     public static void main( String[] args ) {
     	Scanner scanner = new Scanner(System.in);
-
-    	System.out.println(0.00 < 0);
-    	System.out.println(0 < 0.00);
-    	
     	welcomeScreen(scanner);
 	}
     
