@@ -4,17 +4,19 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.application.UserView;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.ColoredOutput;
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.ColoredOutput.ANSI_FONT_COLOR;
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.UserView;
 
 public class UserController {
 	static ArrayList<User> users = new ArrayList<User>();
 	private User model;
-	private UserView view;
+	private UserView modelView;
 	
 	public UserController() {
 		this.model = null;
-		this.view = new UserView();
+		this.modelView = new UserView();
 	}
 	
 	//User / model
@@ -176,7 +178,7 @@ public class UserController {
 	
 	//view
 	public String showUserInfo() {
-		return view.printUserDetails(model);
+		return modelView.printUserDetails(model);
 	}
 
 	public void showLastTransactions(int numOfTransactions) {
@@ -199,6 +201,8 @@ public class UserController {
 		}
 	}
 
-
+	public void colorOut(ANSI_FONT_COLOR color, String message) {
+		ColoredOutput.printAnsiText(color, message);
+	}
 
 }

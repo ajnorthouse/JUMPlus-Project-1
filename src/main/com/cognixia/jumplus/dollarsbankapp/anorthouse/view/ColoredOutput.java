@@ -61,14 +61,8 @@ public class ColoredOutput {
 	}
 	
 	public static String ANSI_RESET = "\u001B[0m";
-	
-	public static void main(String[] args) {
-		System.out.println("\n Default Text\n");
-		
-		for (ANSI_FONT_COLOR fg : ANSI_FONT_COLOR.values()) {
-			for (ANSI_BACKGROUND_COLOR bg : ANSI_BACKGROUND_COLOR.values()) {
-		        System.out.print(fg.value + bg.value + "  TEST  " + ANSI_RESET);
-			}
-		}
+
+	public static void printAnsiText(ANSI_FONT_COLOR color, String message) {
+		System.out.println(color.value + message + ANSI_RESET);
 	}
 }

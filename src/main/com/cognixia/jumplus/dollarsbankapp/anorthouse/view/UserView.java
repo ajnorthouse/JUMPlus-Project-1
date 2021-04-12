@@ -1,6 +1,7 @@
 package com.cognixia.jumplus.dollarsbankapp.anorthouse.view;
 
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.ColoredOutput.ANSI_FONT_COLOR;
 
 public class UserView {
 	public String printUserDetails(User user) {
@@ -15,6 +16,6 @@ public class UserView {
 	}
 	
 	private void printToConsole(String message) {
-		System.out.println(message);
+		ColoredOutput.printAnsiText(ANSI_FONT_COLOR.BLACK, message);
 	}
 }
