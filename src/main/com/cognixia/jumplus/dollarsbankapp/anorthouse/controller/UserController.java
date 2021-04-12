@@ -82,6 +82,26 @@ public class UserController {
 		return view.printUserDetails(model);
 	}
 
+	public void showLastTransactions(int numOfTransactions) {
+		// gets variables
+		ArrayList<String> log = model.getLog();
+		int logSize = log.size(), iterations;
+		
+		// calculates how many times to run for loop
+		if (logSize < numOfTransactions) {
+			iterations = log.size();
+		} else {
+			iterations = numOfTransactions;
+		}
+		
+		//for loop:
+		for (int counter = 0; counter < iterations; counter++) {
+			// TODO move print to view
+			System.out.println(log.get(logSize - iterations + counter));
+			System.out.println("");
+		}
+	}
+
 
 	
 }
