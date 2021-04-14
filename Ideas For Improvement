@@ -13,10 +13,14 @@
 == Transfer funds:
 - Don't allow them to transfer funds to themselves.
   - though, would this be necessary if it removes and then adds it back in?
- 
- 
- 
- 
+
+
+== Errors:
+- Home Screen
+  - fix numbering
+
+
+
 ------- VERSION 2 Implementations --------
  
 == Structures:
