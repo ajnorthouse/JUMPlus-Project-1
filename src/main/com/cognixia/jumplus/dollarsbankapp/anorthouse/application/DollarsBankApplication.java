@@ -73,20 +73,19 @@ public class DollarsBankApplication {
     		
     		switch(counter) {
 	    		case 0:
-	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Customer Name:");
+	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Customer Name:");
 	    			break;
 	    		case 1:
-	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Customer Contact Number:");
+	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Customer Contact Number:");
 	    			break;
 	    		case 2:
-	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "User Id:");
+	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "User Id:");
 	    			break;
 	    		case 3:
-	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Password:");
-	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Password:");
+	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Password: - Regex Requirements -");
 	    			break;
 	    		case 4:
-	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Initial Deposit Amount:");
+	    	    	loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Initial Deposit Amount:");
 	    			break;
     		}
     		
