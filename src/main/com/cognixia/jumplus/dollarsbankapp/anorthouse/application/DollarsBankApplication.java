@@ -175,10 +175,10 @@ public class DollarsBankApplication {
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "|        Home Screen        |");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "1. Deposit Amount");
-    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "1. Withdraw Amount");
-    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "1. Funds Transfer");
-    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "1. View 5 Last Transactions");
-    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "1. Display Account Information");
+    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "2. Withdraw Amount");
+    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "3. Funds Transfer");
+    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "4. View 5 Last Transactions");
+    	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "5. Display Account Information");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "6. Sign Out\n");
     	loggedInUser.colorOut(ANSI_FONT_COLOR.GREEN, "Enter Choice (1, 2, 3, 4, 5, or 6):");
     	
