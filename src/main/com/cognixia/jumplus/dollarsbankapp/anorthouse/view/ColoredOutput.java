@@ -69,4 +69,5 @@ public class ColoredOutput {
 	public static void printAnsiText(ANSI_FONT_COLOR color, String message) {
 		System.out.println(color.value + message + ANSI_RESET);
 	}
+	
 }
