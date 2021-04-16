@@ -137,7 +137,7 @@ class DollarsBankControllerTest {
 	@Test
 	final void testUpdateView() {
 		String expected = "User Details: \n"
-			+ "- Name: " + testUser.getUserId() +"\n"
+			+ "- Name: " + testUser.getName() +"\n"
 			+ "- Contact Number: " + testUser.getContactNumber() + "\n"
 			+ "- Balance: " + testUser.getBalance() + "\n";
 		Object actual = testController.showUserInfo();

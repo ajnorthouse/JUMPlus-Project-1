@@ -9,7 +9,7 @@ public class UserView {
 	public String printUserDetails(User user) {
 		//TODO add color implementaiton
 		String message = "User Details: \n"
-				+ "- Name: " + user.getUserId() +"\n"
+				+ "- Name: " + user.getName() +"\n"
 				+ "- Contact Number: " + user.getContactNumber() + "\n"
 				+ "- Balance: " + user.getBalance() + "\n";
 		
