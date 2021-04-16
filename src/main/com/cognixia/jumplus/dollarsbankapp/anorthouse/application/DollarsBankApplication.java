@@ -1,6 +1,7 @@
 package com.cognixia.jumplus.dollarsbankapp.anorthouse.application;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.controller.DollarsBankController;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.ColoredOutput.ANSI_FONT_COLOR;
@@ -8,6 +9,11 @@ import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.ColoredOutput.ANSI_FO
 public class DollarsBankApplication {
 	
 	static DollarsBankController loggedInUser = new DollarsBankController();
+	static Pattern lengthPattern = Pattern.compile(".{8,}?");
+	static Pattern upperCasePattern = Pattern.compile("[A-Z]+");
+	static Pattern lowerCasePattern = Pattern.compile("[a-z]+");
+	static Pattern specialCharPattern = Pattern.compile("[#?!@$%^&*-]+");
+	static Pattern numberCharPattern = Pattern.compile("[0-9]+");
 	
 	public static void main( String[] args ) {
 		Scanner scanner = new Scanner(System.in);
@@ -81,47 +87,61 @@ public class DollarsBankApplication {
 				//Customer Name
 				case 0:
 					loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Customer Name:");
+					//standard input logic
+					try {
+						userInput[counter] = takeStringInput(scanner.nextLine());
+					} catch (Exception e) {
+						encounterdError = true;
+					}
 					break;
 				
 				//Contact Number
 				case 1:
 					loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Customer Contact Number:");
+					//standard input logic & Regex
+					try {
+						userInput[counter] = takeStringInput(scanner.nextLine());
+						checkContactNumberRegex(userInput[counter]);
+					} catch (Exception e) {
+						encounterdError = true;
+					}
 					break;
 				
 				//Username / User-Id
 				case 2:
 					loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "User Id:");
+					//standard input logic
+					try {
+						userInput[counter] = takeStringInput(scanner.nextLine());
+					} catch (Exception e) {
+						encounterdError = true;
+					}
 					break;
 				
 				//Password
 				case 3:
-					loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Password: - Regex Requirements -");
+					loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Password: \n"
+							+ "- At least 8 chracters with one or more: uppercase letter, lowercase letter, special character, and number. -");
+					//standard input logic & Regex
+					try {
+						userInput[counter] = takeStringInput(scanner.nextLine());
+						checkPasswordRegex(userInput[counter]);
+					} catch (Exception e) {
+						encounterdError = true;
+					}
 					break;
 				
 				//Initial Deposit
 				case 4:
 					loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Initial Deposit Amount:");
+					//double input logic
+					try {
+						amountInput = takeDoubleInput(scanner.nextLine());
+					} catch (Exception e) {
+						encounterdError = true;
+					}
 					break;
 			}
-			
-			
-			//input cleaners
-			if (counter == 4) {
-				//specific test for the double
-				try {
-					amountInput = takeDoubleInput(scanner.nextLine());
-				} catch (Exception e) {
-					encounterdError = true;
-				}
-			} else {
-				//generic test for other inputs
-				try {
-					userInput[counter] = takeStringInput(scanner.nextLine());
-				} catch (Exception e) {
-					encounterdError = true;
-				}
-			}
-			
 			counter++;
 		}
 		
@@ -140,7 +160,8 @@ public class DollarsBankApplication {
 			}
 		}
 	}
-	
+
+
 	private static void loginScreen(Scanner scanner) {
 		loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "");
 		loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
@@ -372,7 +393,7 @@ public class DollarsBankApplication {
 		
 		try {
 			//attempts to parse input
-			tempString = tempString.trim().toLowerCase();
+			tempString = tempString.trim();
 			tempInt = Integer.parseInt(tempString);
 
 			//then checks for non=negative
@@ -394,7 +415,7 @@ public class DollarsBankApplication {
 		
 		try {
 			//attempts to parse input
-			tempString = tempString.trim().toLowerCase();
+			tempString = tempString.trim();
 			tempDouble = Double.parseDouble(tempString);
 
 			//then checks for non=negative
@@ -415,7 +436,7 @@ public class DollarsBankApplication {
 		
 		try {
 			//attempts to parse input
-			tempString = tempString.trim().toLowerCase();
+			tempString = tempString.trim();
 			
 			//checks for empty string
 			if (tempString.equals("")) {
@@ -428,5 +449,51 @@ public class DollarsBankApplication {
 		
 		//returns parsed input
 		return tempString;
+	}
+	
+	
+	// Regex Functions:
+	private static void checkPasswordRegex(String password) throws Exception {
+		System.out.println("\"" + password + "\"");
+		//checks for a length of 8 first
+		if (!lengthPattern.matcher(password).find()) {
+			System.out.println("length");
+			throw new Exception("Password too short!");
+		}
+		
+		//checks for at least one special character
+		if (!specialCharPattern.matcher(password).find()) {
+			System.out.println("special");
+			throw new Exception("Missing at least 1 Special Character!");
+		}
+		
+		//checks for at least one number
+		if (!numberCharPattern.matcher(password).find()) {
+			System.out.println("number");
+			throw new Exception("Missing at least 1 Number!");
+		}
+		
+		//checks for at least one upper-case character
+		if (!upperCasePattern.matcher(password).find()) {
+			System.out.println("upper-case");
+			throw new Exception("Missing at least 1 Upper-Case Letter!");
+		}
+		
+		//checks for at least one lower-case character
+		if (!lowerCasePattern.matcher(password).find()) {
+			System.out.println("lower-case");
+			throw new Exception("Missing at least 1 Lower-Case Letter!");
+		}
+	}
+	
+	private static String checkContactNumberRegex(String contactNumber) throws Exception {
+		//first strips any characters not digits
+		contactNumber = contactNumber.replaceAll("[^0-9]", "");
+		
+		//then checks for length of 10 or 11
+		if (contactNumber.matches("^.{10,11}$")) {
+			return contactNumber;
+		}
+		throw new Exception();
 	}
 }
