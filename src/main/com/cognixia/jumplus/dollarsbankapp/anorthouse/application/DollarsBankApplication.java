@@ -349,8 +349,8 @@ public class DollarsBankApplication {
     
     
     // Helper Functions:
-	public static int takeIntInput(Scanner scanner) throws Exception {
-		String tempString = scanner.next();
+	public static int takeIntInput(String rawInput) throws Exception {
+		String tempString = rawInput;
 		int tempInt = 0;
 		
 		try {
@@ -371,8 +371,8 @@ public class DollarsBankApplication {
 		return tempInt;
 	}
 	
-	public static double takeDoubleInput(Scanner scanner) throws Exception {
-		String tempString = scanner.next();
+	public static double takeDoubleInput(String rawInput) throws Exception {
+		String tempString = rawInput;
 		double tempDouble = 0.00;
 		
 		try {
@@ -393,8 +393,8 @@ public class DollarsBankApplication {
 		return tempDouble;
 	}
 	
-	public static String takeStringInput(Scanner scanner) throws Exception {
-		String tempString = scanner.next();
+	public static String takeStringInput(String rawInput) throws Exception {
+		String tempString = rawInput;
 		
 		try {
 			//attempts to parse input
