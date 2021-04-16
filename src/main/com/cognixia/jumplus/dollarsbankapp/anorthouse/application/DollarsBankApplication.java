@@ -31,8 +31,8 @@ public class DollarsBankApplication {
 		try {
 			userInput = takeIntInput(scanner.nextLine());
 		} catch (Exception e) {
-			loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "Bad Input! Restarting Application.");
-			userInput = 3;
+			loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "Bad Input! Restarting Welcome Screen.");
+			userInput = 0;
 		}
 		
 		
@@ -48,10 +48,16 @@ public class DollarsBankApplication {
 				welcomeScreen(scanner);
 				break;
 			case 3:
+				loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "");
 				loggedInUser.colorOut(ANSI_FONT_COLOR.GREEN, "Thank You for using Dollars Bank!");
 				break;
+			
+			//case 0 is for an input-type error, while default is for just a bad input
+			case 0:
+				loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "");
+				welcomeScreen(scanner);
 			default:
-				loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "No option matching that input, Restarting Welcome Screen.");
+				loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "No option matching that input, Reseting Welcome Screen.");
 				loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "");
 				welcomeScreen(scanner);
 		}
@@ -72,18 +78,27 @@ public class DollarsBankApplication {
 		while (counter < 5 && !encounterdError) {
 			
 			switch(counter) {
+				//Customer Name
 				case 0:
 					loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Customer Name:");
 					break;
+				
+				//Contact Number
 				case 1:
 					loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Customer Contact Number:");
 					break;
+				
+				//Username / User-Id
 				case 2:
 					loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "User Id:");
 					break;
+				
+				//Password
 				case 3:
 					loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Password: - Regex Requirements -");
 					break;
+				
+				//Initial Deposit
 				case 4:
 					loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Initial Deposit Amount:");
 					break;
@@ -109,6 +124,7 @@ public class DollarsBankApplication {
 			
 			counter++;
 		}
+		
 		
 		if (encounterdError) {
 			loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "There was an error with your inputs.");
@@ -136,7 +152,7 @@ public class DollarsBankApplication {
 		String userId = null, password = null;
 
 		//takes userId input
-		loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "User Id:");
+		loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "User Id:");
 		try {
 			userId = takeStringInput(scanner.nextLine());
 		} catch (Exception e) {
@@ -145,7 +161,7 @@ public class DollarsBankApplication {
 
 		//checks for error, then takes password input if no errors
 		if (!encounteredError) {
-			loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Password:");
+			loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Password:");
 			try {
 				password = takeStringInput(scanner.nextLine());
 			} catch (Exception e) {
@@ -186,8 +202,8 @@ public class DollarsBankApplication {
 		try {
 			userInput = takeIntInput(scanner.nextLine());
 		} catch (Exception e) {
-			loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "Bad Input! Restarting Application.");
-			userInput = 6;
+			loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "Bad Input! Restarting Home Screen.");
+			userInput = 0;
 		}
 		
 		//switch case on deciding where to send user based on input
@@ -215,6 +231,11 @@ public class DollarsBankApplication {
 			case 6:
 				signOut(scanner);
 				break;
+				
+			//case 0 is for an input-type error, while default is for just a bad input
+			case 0:
+				loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "");
+				welcomeScreen(scanner);
 			default:
 				loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "No option matching that input, restarting Home Screen...");
 				mainScreen(scanner);
@@ -227,7 +248,7 @@ public class DollarsBankApplication {
 		loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
 		loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "|       Deposit Amount      |");
 		loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
-		loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Amount to be Deposited:");
+		loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Amount to be Deposited:");
 		
 		//checks input
 		boolean encounteredError = false;
@@ -252,7 +273,7 @@ public class DollarsBankApplication {
 		loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
 		loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "|      Withdraw Amount      |");
 		loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
-		loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Amount to be Deposited:");
+		loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Amount to be Deposited:");
 		
 		//checks input
 		boolean encounteredError = false;
@@ -277,7 +298,7 @@ public class DollarsBankApplication {
 		loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
 		loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "|       Funds Transfer      |");
 		loggedInUser.colorOut(ANSI_FONT_COLOR.BLUE, "+---------------------------+");
-		loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Enter UserId of User to transfer funds to:");
+		loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Enter UserId of User to transfer funds to:");
 		
 		
 		//sets up variables
@@ -297,7 +318,7 @@ public class DollarsBankApplication {
 		
 		//takes second input if no errors already
 		if (!encounteredError) {
-			loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Enter ammount to transfer:");
+			loggedInUser.colorOut(ANSI_FONT_COLOR.CYAN, "Enter ammount to transfer:");
 			try {
 				amount = takeDoubleInput(scanner.nextLine());
 			} catch(Exception e) {
@@ -344,7 +365,7 @@ public class DollarsBankApplication {
 	
 	
 	
-	// Helper Functions:
+	// Input Checking Functions:
 	public static int takeIntInput(String rawInput) throws Exception {
 		String tempString = rawInput;
 		int tempInt = 0;
