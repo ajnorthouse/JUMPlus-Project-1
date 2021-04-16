@@ -29,7 +29,7 @@ public class DollarsBankApplication {
     	
     	int userInput;
     	try {
-    		userInput = takeIntInput(scanner);
+    		userInput = takeIntInput(scanner.nextLine());
     	} catch (Exception e) {
     		loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "Bad Input! Restarting Application.");
     		userInput = 3;
@@ -94,14 +94,14 @@ public class DollarsBankApplication {
     		if (counter == 4) {
         		//specific test for the double
         		try {
-        			amountInput = takeDoubleInput(scanner);
+        			amountInput = takeDoubleInput(scanner.nextLine());
         		} catch (Exception e) {
             		encounterdError = true;
         		}
     		} else {
     			//generic test for other inputs
         		try {
-            		userInput[counter] = takeStringInput(scanner);
+            		userInput[counter] = takeStringInput(scanner.nextLine());
         		} catch (Exception e) {
             		encounterdError = true;
         		}
@@ -138,7 +138,7 @@ public class DollarsBankApplication {
     	//takes userId input
     	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "User Id:");
     	try {
-    		userId = takeStringInput(scanner);
+    		userId = takeStringInput(scanner.nextLine());
     	} catch (Exception e) {
     		encounteredError = true;
     	}
@@ -147,7 +147,7 @@ public class DollarsBankApplication {
     	if (!encounteredError) {
         	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Password:");
         	try {
-        		password = takeStringInput(scanner);
+        		password = takeStringInput(scanner.nextLine());
         	} catch (Exception e) {
         		encounteredError = true;
         	}
@@ -184,7 +184,7 @@ public class DollarsBankApplication {
     	//checks input
     	int userInput;
     	try {
-    		userInput = takeIntInput(scanner);
+    		userInput = takeIntInput(scanner.nextLine());
     	} catch (Exception e) {
     		loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "Bad Input! Restarting Application.");
     		userInput = 6;
@@ -233,7 +233,7 @@ public class DollarsBankApplication {
     	boolean encounteredError = false;
     	double userInput = 0.00;
     	try {
-    		userInput = takeDoubleInput(scanner);
+    		userInput = takeDoubleInput(scanner.nextLine());
     	} catch (Exception e) {
     		loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "Bad Input! Returning to Home Screen...");
     		encounteredError = true;
@@ -258,7 +258,7 @@ public class DollarsBankApplication {
     	boolean encounteredError = false;
     	double userInput = 0.00;
     	try {
-    		userInput = takeDoubleInput(scanner);
+    		userInput = takeDoubleInput(scanner.nextLine());
     	} catch (Exception e) {
     		loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "Bad Input! Returning to Home Screen...");
     		encounteredError = true;
@@ -288,7 +288,7 @@ public class DollarsBankApplication {
     	
     	//tests input
     	try {
-    		transferUserId = takeStringInput(scanner);
+    		transferUserId = takeStringInput(scanner.nextLine());
     	} catch(Exception e) {
     		loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "Bad Input for the other user's id!");
     		encounteredError = true;
@@ -299,7 +299,7 @@ public class DollarsBankApplication {
     	if (!encounteredError) {
         	loggedInUser.colorOut(ANSI_FONT_COLOR.BLACK, "Enter ammount to transfer:");
         	try {
-        		amount = takeDoubleInput(scanner);
+        		amount = takeDoubleInput(scanner.nextLine());
         	} catch(Exception e) {
         		loggedInUser.colorOut(ANSI_FONT_COLOR.RED, "Bad Input for the amount to transfer!");
         		encounteredError = true;
