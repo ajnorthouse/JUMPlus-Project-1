@@ -1,19 +1,19 @@
---------------- v2.0 - Improvements ---------------
-== Structures:
+# v2.0 - Improvements
+## Structures:
 - For-Loops
   - change them to do-while loops with incrementer kept inside it.
   - so the incrementer can be kept track inside of it, allowing you to retry passwords, usernames, and the like on inputs in case they're invalid.
  
  
-== Connection:
+## Connection:
 - JDBC connection, instead of just being in memory.
 
 
-== User Interface:
+## User Interface:
 - Ask user for dark-mode or light-mode on initial boot!
 
 
-== Testing:
+## Testing:
 - User Model Testing
   - Don't test getters and setters UNLESS they have custom logic in them
 
@@ -33,12 +33,12 @@
  
  
  
---------------- v2.1 - Optional Features ---------------
-== Structures:
+# v2.1 - Optional Features
+## Structures:
 - Add a implementation that allows the user to chose between file saving and jdbc connection.
 
 
-== Usability:
+## Usability:
 - Add a wait so people can read the results of screens.
   - https://stackoverflow.com/a/57567069
 - Clear console?
