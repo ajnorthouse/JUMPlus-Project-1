@@ -136,7 +136,12 @@ public class DollarsBankController {
 		//temp user for the transfer
 		User tempUser = null;
 		
-		//first checks for any matching userId
+		//checks if the user is attempting to transfer funds to themselves
+		if (model.getUserId().toLowerCase().equals(transferUserId.toLowerCase())) {
+			return false;
+		}
+		
+		//then checks for any matching userId
 		for (int counter = 0; counter < users.size(); counter++) {
 			
 			//stops loop if a matching userId is found
