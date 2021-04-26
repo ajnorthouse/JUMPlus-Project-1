@@ -5,7 +5,7 @@ import java.util.Scanner;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.controller.DollarsBankController;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil.ANSI_FONT_COLOR;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.InputParserUtil;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.RegexCheckerUtil;
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.RegexUtil;
 
 public class DollarsBankApplication {
 	
@@ -97,7 +97,7 @@ public class DollarsBankApplication {
 					//standard input logic & Regex
 					try {
 						userInput[counter] = InputParserUtil.parseString(scanner.nextLine());
-						RegexCheckerUtil.checkContactNumber(userInput[counter]);
+						RegexUtil.checkContactNumber(userInput[counter]);
 					} catch (Exception e) {
 						encounterdError = true;
 					}
@@ -121,7 +121,7 @@ public class DollarsBankApplication {
 					//standard input logic & Regex
 					try {
 						userInput[counter] = InputParserUtil.parseString(scanner.nextLine());
-						RegexCheckerUtil.checkPassword(userInput[counter]);
+						RegexUtil.checkPassword(userInput[counter]);
 					} catch (Exception e) {
 						encounterdError = true;
 					}

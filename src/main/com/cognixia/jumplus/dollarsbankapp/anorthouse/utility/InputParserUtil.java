@@ -1,8 +1,14 @@
 package com.cognixia.jumplus.dollarsbankapp.anorthouse.utility;
 
 public class InputParserUtil {
+
+	//TODO add description
+	//TODO username parser
+
+	//TODO add description
+	//TODO password parser
 	
-	// Input Checking Functions:
+	//TODO add description
 	public static int parseInt(String rawInput) throws Exception {
 		String tempString = rawInput;
 		int tempInt = 0;
@@ -24,7 +30,8 @@ public class InputParserUtil {
 		//returns parsed input
 		return tempInt;
 	}
-	
+
+	//TODO add description
 	public static double parseDouble(String rawInput) throws Exception {
 		String tempString = rawInput;
 		double tempDouble = 0.00;
@@ -46,7 +53,8 @@ public class InputParserUtil {
 		//returns parsed input
 		return tempDouble;
 	}
-	
+
+	//TODO add description
 	public static String parseString(String rawInput) throws Exception {
 		String tempString = rawInput;
 		

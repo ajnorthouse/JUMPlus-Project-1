@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil.ANSI_FONT_COLOR;
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ConsoleUtil;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.UserView;
 
 public class DollarsBankController {
@@ -183,7 +184,7 @@ public class DollarsBankController {
 	
 	// view methods
 	public String showUserInfo() {
-		return modelView.printUserDetails(model);
+		return modelView.getUserDetails(model);
 	}
 	public void showLastTransactions(int numOfTransactions) {
 		// gets variables
@@ -205,7 +206,7 @@ public class DollarsBankController {
 		}
 	}
 	public void colorOut(ANSI_FONT_COLOR color, String message) {
-		ColorUtil.printAnsiText(color, message);
+		ConsoleUtil.printStatement(ColorUtil.combineAnsi(color, message));
 	}
 
 }

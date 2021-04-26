@@ -3,7 +3,7 @@ package com.cognixia.jumplus.dollarsbankapp.anorthouse.utility;
 /**
  * Class containing basic ANSI values to be used with System.out.println() statements. 
  * <p>
- * The codes were found in "Coloured Terminal Output with Java" by Andrew (he/him).
+ * The codes were found in "Colored Terminal Output with Java" by Andrew (he/him).
  * <p>
  * @author Alexandre Northouse
  * @see <a href="https://dev.to/awwsmm/coloured-terminal-output-with-java-57l3">Coloured Terminal Output with Java</a>
@@ -66,7 +66,7 @@ public class ColorUtil {
 	public static String ANSI_RESET = "\u001B[0m";
 
 	//Basic implementation of combining ANSI and a string to console
-	public static String combineAnsiMessage(ANSI_FONT_COLOR color, String message) {
+	public static String combineAnsi(ANSI_FONT_COLOR color, String message) {
 		return (color.value + message + ANSI_RESET);
 	}
 	

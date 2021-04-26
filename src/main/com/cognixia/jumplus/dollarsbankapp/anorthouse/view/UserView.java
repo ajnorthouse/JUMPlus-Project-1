@@ -1,25 +1,19 @@
 package com.cognixia.jumplus.dollarsbankapp.anorthouse.view;
 
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil.ANSI_FONT_COLOR;
 
 public class UserView {
-
-	//Simple print method
-	public String printUserDetails(User user) {
-		//TODO add color implementaiton
+	
+	//gets the user's details
+	public String getUserDetails(User user) {
+		//TODO add color implementation
 		String message = "User Details: \n"
 				+ "- Name: " + user.getName() +"\n"
 				+ "- Contact Number: " + user.getContactNumber() + "\n"
 				+ "- Balance: " + user.getBalance() + "\n";
 		
-		printToConsole(message);
 		return message;
 	}
-
-	//Calls ColoredOutput to print correctly
-	private void printToConsole(String message) {
-		ColorUtil.printAnsiText(ANSI_FONT_COLOR.BLACK, message);
-	}
+	
+	//TODO create logs message
 }

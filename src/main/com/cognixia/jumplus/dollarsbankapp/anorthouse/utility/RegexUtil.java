@@ -2,7 +2,7 @@ package com.cognixia.jumplus.dollarsbankapp.anorthouse.utility;
 
 import java.util.regex.Pattern;
 
-public class RegexCheckerUtil {
+public class RegexUtil {
 	
 	static Pattern lengthPattern = Pattern.compile(".{8,}?");
 	static Pattern upperCasePattern = Pattern.compile("[A-Z]+");
@@ -10,7 +10,7 @@ public class RegexCheckerUtil {
 	static Pattern specialCharPattern = Pattern.compile("[#?!@$%^&*-]+");
 	static Pattern numberCharPattern = Pattern.compile("[0-9]+");
 	
-	// Regex Functions:
+	//TODO add description
 	public static void checkPassword(String password) throws Exception {
 		System.out.println("\"" + password + "\"");
 		//checks for a length of 8 first
@@ -44,6 +44,7 @@ public class RegexCheckerUtil {
 		}
 	}
 	
+	//TODO add description
 	public static String checkContactNumber(String contactNumber) throws Exception {
 		//first strips any characters not digits
 		contactNumber = contactNumber.replaceAll("[^0-9]", "");
@@ -54,5 +55,8 @@ public class RegexCheckerUtil {
 		}
 		throw new Exception();
 	}
+
+	//TODO add description
+	//TODO username regex
 	
 }
