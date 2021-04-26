@@ -5,8 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.ColoredOutput;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.ColoredOutput.ANSI_FONT_COLOR;
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil;
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil.ANSI_FONT_COLOR;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.UserView;
 
 public class DollarsBankController {
@@ -205,7 +205,7 @@ public class DollarsBankController {
 		}
 	}
 	public void colorOut(ANSI_FONT_COLOR color, String message) {
-		ColoredOutput.printAnsiText(color, message);
+		ColorUtil.printAnsiText(color, message);
 	}
 
 }
