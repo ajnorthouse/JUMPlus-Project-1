@@ -66,8 +66,8 @@ public class ColorUtil {
 	public static String ANSI_RESET = "\u001B[0m";
 
 	//Basic implementation of combining ANSI and a string to console
-	public static void printAnsiText(ANSI_FONT_COLOR color, String message) {
-		System.out.println(color.value + message + ANSI_RESET);
+	public static String combineAnsiMessage(ANSI_FONT_COLOR color, String message) {
+		return (color.value + message + ANSI_RESET);
 	}
 	
 }
