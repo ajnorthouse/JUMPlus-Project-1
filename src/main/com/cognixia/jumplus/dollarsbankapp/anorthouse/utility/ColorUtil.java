@@ -1,4 +1,4 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse.view;
+package com.cognixia.jumplus.dollarsbankapp.anorthouse.utility;
 
 /**
  * Class containing basic ANSI values to be used with System.out.println() statements. 
@@ -9,7 +9,7 @@ package com.cognixia.jumplus.dollarsbankapp.anorthouse.view;
  * @see <a href="https://dev.to/awwsmm/coloured-terminal-output-with-java-57l3">Coloured Terminal Output with Java</a>
  * @see <a href="https://github.com/fusesource/jansi">JANSi Maven Project</a>
  */
-public class ColoredOutput {
+public class ColorUtil {
 	//Basic text ("foreground") fonts
 	public static enum ANSI_FONT_COLOR {
 		BLACK("\u001B[30m"),
