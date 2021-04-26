@@ -8,66 +8,63 @@ import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
 
 public class UserController {
 	
-	private User model;
-	
-	
 	// id methods
-	public Long getId() {
-		return model.getId();
+	public Long getId(User user) {
+		return user.getId();
 	}
 	
 	
 	// username methods
-	public String getUsername() {
-		return model.getUsername();
+	public String getUsername(User user) {
+		return user.getUsername();
 	}
-	public void setUsername(String username) {
-		model.setUsername(username);
+	public void setUsername(User user, String username) {
+		user.setUsername(username);
 	}
 	
 	
 	// password methods
-	public String getPassword() {
-		return model.getPassword();
+	public String getPassword(User user) {
+		return user.getPassword();
 	}
-	public void setPassword(String password) {
-		model.setPassword(password);
+	public void setPassword(User user, String password) {
+		user.setPassword(password);
 	}
 	
 	
 	// name methods
-	public String getName() {
-		return model.getName();
+	public String getName(User user) {
+		return user.getName();
 	}
-	public void setName(String name) {
-		model.setName(name);
+	public void setName(User user, String name) {
+		user.setName(name);
 	}
 	
 	
 	// contactNumber methods
-	public String getContactNumber() {
-		return model.getContactNumber();
+	public String getContactNumber(User user) {
+		return user.getContactNumber();
 	}
-	public void setContactNumber(String contactNumber) {
-		model.setContactNumber(contactNumber);
+	public void setContactNumber(User user, String contactNumber) {
+		user.setContactNumber(contactNumber);
 	}
 	
 
 	// balance methods
-	public double getBalance() {
-		return model.getBalance();
+	public double getBalance(User user) {
+		return user.getBalance();
 	}
-	public void setBalance(double balance) {
-		model.setBalance(balance);
+	public void setBalance(User user, double balance) {
+		user.setBalance(balance);
 	}
 	
 
 	// log methods
-	public ArrayList<String> getUserLog() {
-		return model.getLog();
+	public ArrayList<String> getUserLog(User user) {
+		return user.getLog();
 	}
-	public void setUserLog(ArrayList<String> log) {
-		model.setLog(log);
+	public void setUserLog(User user, ArrayList<String> log) {
+		user.setLog(log);
 	}
 	/**
 	 * Function for updating the log with what happened to that account.
