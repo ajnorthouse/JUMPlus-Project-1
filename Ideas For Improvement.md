@@ -4,57 +4,16 @@
 
 
 ---
-## v1.2 - Restructure
-Refactor the Project to make for easier implementing of future plans
-
-- [x] Application
-	- [x] DollarsBankApplication
-		- [x] Just Main / Runner
-
-- [x] Controller
-	- [x] DollarsBankController
-		- [x] Menu Logic
-		- [x] Deposit
-		- [x] Withdraw
-		- [x] Transfer
-	- [x] UserController
-		- [x] Getters
-		- [x] Setters
-		- [x] Log Logic
-
-- [x] Model
-	- [x] User
-		- [x] POJO
-
-- [x] Utility
-	- [x] ColorUtil
-		- [x] Same Thing it already does
-	- [x] ConsoleOutputUtil
-		- [x] This should handle all the console prints
-	- [x] InputParserUtil
-		- [ ] Check Username
-		- [ ] Check Password
-		- [x] Check String (generic)
-		- [x] Check Double
-		- [x] Check Int
-	- [x] RegexCheckerUtil
-		- [x] Check password
-		- [x] Check contact number
-		- [ ] Check username
-
-- [x] View
-	- [x] UserView
-		- [x] Literally the Same
-		- [x] Log printer
-	- [x] DollarsBankView
-		- [x] Prints Menus
-
-
-
-
----
 ## v1.3 - Testing
 Implement more thorough testing.
+
+### Small Additions:
+- [ ] Utility
+	- [ ] InputParserUtil
+		- [ ] Check Username
+		- [ ] Check Password
+	- [ ] RegexCheckerUtil
+		- [ ] Check username
 
 ### Testing:
 - [ ] Controller
