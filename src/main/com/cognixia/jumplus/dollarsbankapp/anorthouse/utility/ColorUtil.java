@@ -5,7 +5,7 @@ package com.cognixia.jumplus.dollarsbankapp.anorthouse.utility;
  * <p>
  * The codes were found in "Colored Terminal Output with Java" by Andrew (he/him).
  * <p>
- * @author Alexandre Northouse
+ * @author Alexandré Northouse
  * @see <a href="https://dev.to/awwsmm/coloured-terminal-output-with-java-57l3">Coloured Terminal Output with Java</a>
  * @see <a href="https://github.com/fusesource/jansi">JANSi Maven Project</a>
  */

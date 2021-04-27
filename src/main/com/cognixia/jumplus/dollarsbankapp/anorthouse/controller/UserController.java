@@ -15,55 +15,55 @@ public class UserController {
 	
 	
 	// username methods
-	public String getUsername(User user) {
+	public static String getUsername(User user) {
 		return user.getUsername();
 	}
-	public void setUsername(User user, String username) {
+	public static void setUsername(User user, String username) {
 		user.setUsername(username);
 	}
 	
 	
 	// password methods
-	public String getPassword(User user) {
+	public static String getPassword(User user) {
 		return user.getPassword();
 	}
-	public void setPassword(User user, String password) {
+	public static void setPassword(User user, String password) {
 		user.setPassword(password);
 	}
 	
 	
 	// name methods
-	public String getName(User user) {
+	public static String getName(User user) {
 		return user.getName();
 	}
-	public void setName(User user, String name) {
+	public static void setName(User user, String name) {
 		user.setName(name);
 	}
 	
 	
 	// contactNumber methods
-	public String getContactNumber(User user) {
+	public static String getContactNumber(User user) {
 		return user.getContactNumber();
 	}
-	public void setContactNumber(User user, String contactNumber) {
+	public static void setContactNumber(User user, String contactNumber) {
 		user.setContactNumber(contactNumber);
 	}
 	
 
 	// balance methods
-	public double getBalance(User user) {
+	public static double getBalance(User user) {
 		return user.getBalance();
 	}
-	public void setBalance(User user, double balance) {
+	public static void setBalance(User user, double balance) {
 		user.setBalance(balance);
 	}
 	
 
 	// log methods
-	public ArrayList<String> getUserLog(User user) {
+	public static ArrayList<String> getUserLog(User user) {
 		return user.getLog();
 	}
-	public void setUserLog(User user, ArrayList<String> log) {
+	public static void setUserLog(User user, ArrayList<String> log) {
 		user.setLog(log);
 	}
 	/**
@@ -71,7 +71,7 @@ public class UserController {
 	 * @param user
 	 * @param message
 	 */
-	public void updateLog(User user, String message) {
+	public static void updateLog(User user, String message) {
 		//generates date:
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, MMM dd yyyy - HH:mm:ss z"); 
 		String date = (ZonedDateTime.now().format(formatter) + "\n");
