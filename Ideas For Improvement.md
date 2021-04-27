@@ -7,20 +7,20 @@
 ## v1.2 - Restructure
 Refactor the Project to make for easier implementing of future plans
 
-- [ ] Application
-	- [ ] DollarsBankApplication
-		- [ ] Just Main / Runner
+- [x] Application
+	- [x] DollarsBankApplication
+		- [x] Just Main / Runner
 
-- [ ] Controller
-	- [ ] DollarsBankController
-		- [ ] Menu Logic
-		- [ ] Deposit
-		- [ ] Withdraw
-		- [ ] Transfer
-	- [ ] UserController
-		- [ ] Getters
-		- [ ] Setters
-		- [ ] Log Logic
+- [x] Controller
+	- [x] DollarsBankController
+		- [x] Menu Logic
+		- [x] Deposit
+		- [x] Withdraw
+		- [x] Transfer
+	- [x] UserController
+		- [x] Getters
+		- [x] Setters
+		- [x] Log Logic
 
 - [x] Model
 	- [x] User
