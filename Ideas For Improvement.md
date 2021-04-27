@@ -7,48 +7,47 @@
 ## v1.2 - Restructure
 Refactor the Project to make for easier implementing of future plans
 
-- [ ] Application
-	- [ ] DollarsBankApplication
-		- [ ] Just Main / Runner
+- [x] Application
+	- [x] DollarsBankApplication
+		- [x] Just Main / Runner
 
-- [ ] Controller
-	- [ ] DollarsBankController
-		- [ ] Menu Logic
-		- [ ] Deposit
-		- [ ] Withdraw
-		- [ ] Transfer
-	- [ ] UserController
-		- [ ] Getters
-		- [ ] Setters
-		- [ ] Log Logic
+- [x] Controller
+	- [x] DollarsBankController
+		- [x] Menu Logic
+		- [x] Deposit
+		- [x] Withdraw
+		- [x] Transfer
+	- [x] UserController
+		- [x] Getters
+		- [x] Setters
+		- [x] Log Logic
 
 - [x] Model
 	- [x] User
 		- [x] POJO
 
-- [ ] Utility
-	- [ ] ColorUtil
-		- [ ] Same Thing it already does
-	- [ ] ConsoleOutputUtil
-		- [ ] This should handle all the console prints
-	- [ ] InputParserUtil
+- [x] Utility
+	- [x] ColorUtil
+		- [x] Same Thing it already does
+	- [x] ConsoleOutputUtil
+		- [x] This should handle all the console prints
+	- [x] InputParserUtil
 		- [ ] Check Username
 		- [ ] Check Password
-		- [ ] Check String (generic)
-		- [ ] Check Double
-		- [ ] Check Int
-	- [ ] RegexCheckerUtil
-		- [ ] Check password
-		- [ ] Check contact number
+		- [x] Check String (generic)
+		- [x] Check Double
+		- [x] Check Int
+	- [x] RegexCheckerUtil
+		- [x] Check password
+		- [x] Check contact number
 		- [ ] Check username
 
-- [ ] View
-	- [ ] UserView
-		- [ ] Literally the Same
-		- [ ] Log printer
-	- [ ] DollarsBankView
-		- [ ] Prints Menus
-		- [ ] Prints Input requests?
+- [x] View
+	- [x] UserView
+		- [x] Literally the Same
+		- [x] Log printer
+	- [x] DollarsBankView
+		- [x] Prints Menus
 
 
 

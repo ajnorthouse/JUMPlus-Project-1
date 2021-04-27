@@ -6,7 +6,7 @@ public class User {
 	// Class Variables
 	private static Long currentID = 1L;
 	private Long id;
-	private String userId;
+	private String username;
 	private String password;
 	private String name;
 	private String contactNumber;
@@ -18,16 +18,16 @@ public class User {
 	public User() {
 		super();
 		id = currentID++;
-		userId = "N/A";
+		username = "N/A";
 		password = "";
 		name = "N/A";
 		contactNumber = "N/A";
 		balance = 0.0;
 		log = null;
 	}
-	public User(String userId, String password, String name, String contactNumber, double balance) {
+	public User(String username, String password, String name, String contactNumber, double balance) {
 		this();
-		this.userId = userId;
+		this.username = username;
 		this.password = password;
 		this.name = name;
 		this.contactNumber = contactNumber;
@@ -43,8 +43,8 @@ public class User {
 	public Long getId() {
 		return id;
 	}
-	public String getUserId() {
-		return userId;
+	public String getUsername() {
+		return username;
 	}
 	public String getPassword() {
 		return password;
@@ -64,8 +64,8 @@ public class User {
 	
 	
 	// Setters
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public void setPassword(String password) {
 		this.password = password;

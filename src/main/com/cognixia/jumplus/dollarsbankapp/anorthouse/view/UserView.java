@@ -1,24 +1,52 @@
 package com.cognixia.jumplus.dollarsbankapp.anorthouse.view;
 
+import java.util.ArrayList;
+
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.ColoredOutput.ANSI_FONT_COLOR;
+import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ConsoleUtil;
 
 public class UserView {
-
-	//Simple print method
-	public String printUserDetails(User user) {
-		//TODO add color implementaiton
-		String message = "User Details: \n"
-				+ "- Name: " + user.getName() +"\n"
-				+ "- Contact Number: " + user.getContactNumber() + "\n"
-				+ "- Balance: " + user.getBalance() + "\n";
+	
+	StringBuilder userString = new StringBuilder();
+	
+	//gets the user's details
+	public String getUserDetails(User user) {
+		//TODO add color implementation
+		//resets string builder
+		userString.setLength(0);
 		
-		printToConsole(message);
-		return message;
+		userString.append("User Details: \n");
+		userString.append("- Name: " + user.getName() +"\n");
+		userString.append("- Contact Number: " + user.getContactNumber() + "\n");
+		userString.append("- Balance: " + user.getBalance() + "\n");
+
+		ConsoleUtil.printStatement(userString.toString());
+		return userString.toString();
+	}
+	
+	//TODO create logs message
+	public String showLastTransactions(User user, int numOfTransactions) {
+		//resets string builder
+		userString.setLength(0);
+		
+		// gets variables
+		ArrayList<String> log = user.getLog();
+		int logSize = log.size(), iterations;
+		
+		// calculates how many times to run for loop
+		if (logSize < numOfTransactions) {
+			iterations = log.size();
+		} else {
+			iterations = numOfTransactions;
+		}
+		
+		//for loop:
+		for (int counter = 0; counter < iterations; counter++) {
+			userString.append(log.get(logSize - iterations + counter) + "\n");
+		}
+		
+		ConsoleUtil.printStatement(userString.toString());
+		return userString.toString();
 	}
 
-	//Calls ColoredOutput to print correctly
-	private void printToConsole(String message) {
-		ColoredOutput.printAnsiText(ANSI_FONT_COLOR.BLACK, message);
-	}
 }
