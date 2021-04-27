@@ -45,10 +45,9 @@ Refactor the Project to make for easier implementing of future plans
 - [x] View
 	- [x] UserView
 		- [x] Literally the Same
-		- [ ] Log printer
-	- [ ] DollarsBankView
-		- [ ] Prints Menus
-		- [ ] Prints Input requests?
+		- [x] Log printer
+	- [x] DollarsBankView
+		- [x] Prints Menus
 
 
 
