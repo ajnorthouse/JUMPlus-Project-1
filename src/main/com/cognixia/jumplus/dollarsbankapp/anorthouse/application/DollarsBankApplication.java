@@ -13,6 +13,7 @@ public class DollarsBankApplication {
 	static DollarsBankController controller = new DollarsBankController();
 	static DollarsBankView view = new DollarsBankView();
 	
+	// main runner / starter
 	public static void main( String[] args ) {
 		Scanner scanner = new Scanner(System.in);
 		welcomeScreen(scanner);
@@ -56,7 +57,6 @@ public class DollarsBankApplication {
 		view.createNewAccount();
 		controller.createNewAccount(scanner);
 	}
-
 
 	private static void loginScreen(Scanner scanner) {
 		view.loginScreen();
@@ -135,4 +135,5 @@ public class DollarsBankApplication {
 		controller.signOut();
 		view.signOut();
 	}
+
 }

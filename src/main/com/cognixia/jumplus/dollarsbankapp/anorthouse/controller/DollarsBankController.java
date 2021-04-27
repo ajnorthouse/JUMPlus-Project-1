@@ -16,7 +16,8 @@ public class DollarsBankController {
 	private UserView userView = new UserView();
 	private User currentUser = null;
 	
-	// login methods
+	
+	// account methods
 	public boolean attemptLogin(String userId, String password) {
 		
 		//for loop to iterate over all users
@@ -39,9 +40,9 @@ public class DollarsBankController {
 		
 		return false;
 	}
-	
-	
-	// create account methods
+	public void signOut() {
+		this.currentUser = null;
+	}
 	public boolean createUser(String userId, String password, String name, String contactNumber, double balance) {
 		
 		//first checks for any matching userId
@@ -138,15 +139,11 @@ public class DollarsBankController {
 
 
 	
-	/////////////////////////////////////////////////////////
-	public void signOut() {
-		this.currentUser = null;
-	}
+	
+	//Screen Methods
 	public void recentTransactions(int numOfTransactions) {
 		userView.showLastTransactions(currentUser, numOfTransactions);
 	}
-
-
 	public void fundsTransfer(Scanner scanner) {
 		// TODO Auto-generated method stub
 		ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.CYAN, "Enter UserId of User to transfer funds to:"));
@@ -189,9 +186,6 @@ public class DollarsBankController {
 			}
 		}
 	}
-	
-	
-	
 
 
 	public void withdrawAmount(Scanner scanner) {
@@ -218,9 +212,6 @@ public class DollarsBankController {
 			}
 		}
 	}
-	
-	
-	
 
 
 	public void depositAmount(Scanner scanner) {
@@ -243,9 +234,6 @@ public class DollarsBankController {
 			ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.GREEN, "Deposited " + userInput + " into your account!"));
 		}
 	}
-
-
-	
 	public int mainScreen(Scanner scanner) {
 		// TODO Auto-generated method stub
 		ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.GREEN, "Enter Choice (1, 2, 3, 4, 5, or 6):"));
@@ -261,9 +249,6 @@ public class DollarsBankController {
 		
 		return userInput;
 	}
-	
-	
-	
 
 
 	public boolean loginScreen(Scanner scanner) {
@@ -307,9 +292,6 @@ public class DollarsBankController {
 			}
 		}
 	}
-
-
-	
 	public void createNewAccount(Scanner scanner) {
 		// TODO Auto-generated method stub
 		
@@ -396,9 +378,6 @@ public class DollarsBankController {
 			}
 		}
 	}
-
-
-	
 	public int welcomeScreen(Scanner scanner) {
 		// TODO Auto-generated method stub
 		ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.GREEN, "Enter Choice (1, 2, or 3):"));
