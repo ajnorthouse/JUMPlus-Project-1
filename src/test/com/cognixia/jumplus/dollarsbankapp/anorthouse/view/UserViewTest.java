@@ -5,10 +5,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
 
+@DisplayName("UserView Tests")
 class UserViewTest {
 	
 	static private UserView view = new UserView();
@@ -23,6 +25,7 @@ class UserViewTest {
 	}
 
 	@Test
+	@DisplayName("getUserDetails()")
 	final void testGetUserDetails() {
 		String expected = "User Details: \n- Name: N/A\n- Contact Number: N/A\n- Balance: 0.0\n";
 		String actual = view.getUserDetails(testUser);
@@ -30,6 +33,7 @@ class UserViewTest {
 	}
 
 	@Test
+	@DisplayName("showLastTransactions()")
 	final void testShowLastTransactions() {
 		String expected = "Testing!\n";
 		String actual = view.showLastTransactions(testUser, 5);

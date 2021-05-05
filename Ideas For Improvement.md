@@ -11,9 +11,8 @@ Implement more thorough testing.
 - [ ] Utility
 	- [ ] InputParserUtil
 		- [ ] Check Username
-		- [ ] Check Password
-	- [ ] RegexCheckerUtil
-		- [ ] Check username
+	- [x] RegexCheckerUtil
+		- [x] Check username
 
 ### Testing:
 - [ ] Controller

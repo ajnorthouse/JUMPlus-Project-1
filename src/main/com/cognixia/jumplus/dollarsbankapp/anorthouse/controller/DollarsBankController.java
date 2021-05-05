@@ -11,13 +11,17 @@ import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.RegexUtil;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.UserView;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil.ANSI_FONT_COLOR;
 
+
 public class DollarsBankController {
+	
 	static ArrayList<User> users = new ArrayList<User>();
-	private UserView userView = new UserView();
+	private UserController uController = new UserController();
+	private UserView uView = new UserView();
 	private User currentUser = null;
 	
 	
 	// account methods
+	
 	public boolean attemptLogin(String userId, String password) {
 		
 		//for loop to iterate over all users
@@ -25,7 +29,7 @@ public class DollarsBankController {
 		for (int counter = 0; counter < users.size(); counter++) {
 			
 			//checks for matching userId
-			if (UserController.getUsername(users.get(counter)).equals(userId)) {
+			if (uController.getUsername(users.get(counter)).equals(userId)) {
 				
 				//then checks if the passwords are equal
 				if (users.get(counter).getPassword().equals(password)) {
@@ -40,21 +44,23 @@ public class DollarsBankController {
 		
 		return false;
 	}
+	
 	public void signOut() {
 		this.currentUser = null;
 	}
+	
 	public boolean createUser(String userId, String password, String name, String contactNumber, double balance) {
 		
 		//first checks for any matching userId
 		for (int counter = 0; counter < users.size(); counter++) {
-			if (UserController.getUsername(users.get(counter)).equals(userId)) {
+			if (uController.getUsername(users.get(counter)).equals(userId)) {
 				return false;
 			}
 		}
 		
 		//then just creates the user
 		User newUser = new User(userId, password, name, contactNumber, balance);
-		UserController.updateLog(newUser, "Created Account with initial balance of: $" + balance + ".");
+		uController.updateLog(newUser, "Created Account with initial balance of: $" + balance + ".");
 		users.add(newUser);
 		
 		return true;
@@ -62,19 +68,21 @@ public class DollarsBankController {
 	
 	
 	// deposit methods
+	
 	public void addDeposit(double userInput) {
-		double balance = UserController.getBalance(currentUser);
-		UserController.setBalance(currentUser, balance + userInput);
+		double balance = uController.getBalance(currentUser);
+		uController.setBalance(currentUser, balance + userInput);
 		
 		//update log
 		String message = "Deposited $" + userInput + " to bring Balance to: $" + balance + ".";
-		UserController.updateLog(currentUser, message);
+		uController.updateLog(currentUser, message);
 	}
 	
 	
 	// withdrawal methods
+	
 	public void subtractWithdrawal(double userInput) throws Exception {
-		double balance = UserController.getBalance(currentUser);
+		double balance = uController.getBalance(currentUser);
 		
 		//checks if the account has enough funds
 		if (balance < userInput) {
@@ -83,17 +91,18 @@ public class DollarsBankController {
 		
 		//update log
 		String message = "Withdrew $" + userInput + " to bring Balance to: $" + balance + ".";
-		UserController.updateLog(currentUser, message);
+		uController.updateLog(currentUser, message);
 	}
 	
 	
 	// transfer methods
+	
 	public void attemptTransfer(String transferUserId, double amount) throws Exception {
 		//temp user for the transfer
 		User tempUser = null;
 		
 		//checks if the user is attempting to transfer funds to themselves
-		if (UserController.getUsername(currentUser).equals(transferUserId)) {
+		if (uController.getUsername(currentUser).equals(transferUserId)) {
 			throw new Exception("Can't transfer to yourself!");
 		}
 		
@@ -101,7 +110,7 @@ public class DollarsBankController {
 		for (int counter = 0; counter < users.size(); counter++) {
 			
 			//stops loop if a matching userId is found
-			if (UserController.getUsername(users.get(counter)).equals(transferUserId)) {
+			if (uController.getUsername(users.get(counter)).equals(transferUserId)) {
 				tempUser = users.get(counter);
 				break;
 			}
@@ -113,19 +122,21 @@ public class DollarsBankController {
 		}
 		
 		//subtracts withdrawal and then adds deposit
-		transferWithdrawal(currentUser, UserController.getUsername(tempUser), amount);
-		transferDeposit(tempUser, UserController.getUsername(currentUser), amount);
+		transferWithdrawal(currentUser, uController.getUsername(tempUser), amount);
+		transferDeposit(tempUser, uController.getUsername(currentUser), amount);
 	}
+	
 	public void transferDeposit(User user, String transferUserId, double userInput) {
-		double balance = UserController.getBalance(currentUser);
-		UserController.setBalance(currentUser, balance + userInput);
+		double balance = uController.getBalance(currentUser);
+		uController.setBalance(currentUser, balance + userInput);
 		
 		//update log
 		String message = "Deposited $" + userInput + " to bring Balance to: $" + balance + ".";
-		UserController.updateLog(currentUser, message);
+		uController.updateLog(currentUser, message);
 	}
+	
 	public void transferWithdrawal(User user, String transferUserId, double userInput) throws Exception {
-		double balance = UserController.getBalance(currentUser);
+		double balance = uController.getBalance(currentUser);
 		
 		//checks if the account has enough funds
 		if (balance < userInput) {
@@ -134,166 +145,33 @@ public class DollarsBankController {
 		
 		//update log
 		String message = "Transfered $" + userInput + " to " + transferUserId + ", Balance now: $" + balance + ".";
-		UserController.updateLog(currentUser, message);
+		uController.updateLog(currentUser, message);
 	}
 
 
 	
 	
 	//Screen Methods
-	public void recentTransactions(int numOfTransactions) {
-		userView.showLastTransactions(currentUser, numOfTransactions);
-	}
-	public void fundsTransfer(Scanner scanner) {
-		// TODO Auto-generated method stub
-		ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.CYAN, "Enter UserId of User to transfer funds to:"));
+	
+	public int welcomeScreen(Scanner scanner) {
+		
+		ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.GREEN, "Enter Choice (1, 2, or 3):"));
 		
 		
-		//sets up variables
-		String transferUserId = null;
-		double amount = 0.00;
-		boolean encounteredError = false;
-		
-		
-		//tests input
-		try {
-			transferUserId = InputParserUtil.parseString(scanner.nextLine());
-		} catch(Exception e) {
-			ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, "Bad Input for the other user's id!"));
-			encounteredError = true;
-		}
-		
-		
-		//takes second input if no errors already
-		if (!encounteredError) {
-			ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.CYAN, "Enter ammount to transfer:"));
-			try {
-				amount = InputParserUtil.parseDouble(scanner.nextLine());
-			} catch(Exception e) {
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, "Bad Input for the amount to transfer!"));
-				encounteredError = true;
-			}
-		}
-		
-		
-		//checks for any errors, then attempts to login user or return to welcome screen
-		if (!encounteredError) {
-			try {
-				attemptTransfer(transferUserId, amount);
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.GREEN, "Successfully transfered funds!"));
-			} catch (Exception e) {
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, e.getMessage()));
-			}
-		}
-	}
-
-
-	public void withdrawAmount(Scanner scanner) {
-		// TODO Auto-generated method stub
-		ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.CYAN, "Amount to be Deposited:"));
-		
-		//checks input
-		boolean encounteredError = false;
-		double userInput = 0.00;
-		try {
-			userInput = InputParserUtil.parseDouble(scanner.nextLine());
-		} catch (Exception e) {
-			ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, "Bad Input! Returning to Home Screen..."));
-			encounteredError = true;
-		}
-		
-		//logic
-		if (!encounteredError) {
-			try {
-				subtractWithdrawal(userInput);
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.GREEN, "Withdrew " + userInput + " from your account!"));
-			} catch (Exception e) {
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, e.getMessage()));
-			}
-		}
-	}
-
-
-	public void depositAmount(Scanner scanner) {
-		// TODO Auto-generated method stub
-		ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.CYAN, "Amount to be Deposited:"));
-		
-		//checks input
-		boolean encounteredError = false;
-		double userInput = 0.00;
-		try {
-			userInput = InputParserUtil.parseDouble(scanner.nextLine());
-		} catch (Exception e) {
-			ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, "Bad Input! Returning to Home Screen..."));
-			encounteredError = true;
-		}
-		
-		//logic
-		if (!encounteredError) {
-			addDeposit(userInput);
-			ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.GREEN, "Deposited " + userInput + " into your account!"));
-		}
-	}
-	public int mainScreen(Scanner scanner) {
-		// TODO Auto-generated method stub
-		ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.GREEN, "Enter Choice (1, 2, 3, 4, 5, or 6):"));
-		
-		//checks input
 		int userInput;
 		try {
 			userInput = InputParserUtil.parseInt(scanner.nextLine());
 		} catch (Exception e) {
-			ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, "Bad Input! Restarting Home Screen."));
+			ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, "Bad Input! Restarting Welcome Screen."));
 			userInput = 0;
 		}
 		
 		return userInput;
 	}
 
-
-	public boolean loginScreen(Scanner scanner) {
-		// TODO Auto-generated method stub
-
-		//temp variables
-		boolean encounteredError = false;
-		String userId = null, password = null;
-
-		//takes userId input
-		ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.CYAN, "User Id:"));
-		try {
-			userId = InputParserUtil.parseString(scanner.nextLine());
-		} catch (Exception e) {
-			encounteredError = true;
-		}
-
-		//checks for error, then takes password input if no errors
-		if (!encounteredError) {
-			ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.CYAN, "Password:"));
-			try {
-				password = InputParserUtil.parseString(scanner.nextLine());
-			} catch (Exception e) {
-				encounteredError = true;
-			}
-		}
-		
-		//checks for any errors, then attempts to login user or return to welcome screen
-		if (encounteredError) {
-			ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, "There was an error with your inputs."));
-			ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, "Returning to Welcome Screen..."));
-			return false;
-		} else {
-			if (attemptLogin(userId, password)) {
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.GREEN, "Successfully logged in!"));
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.GREEN, "Redirecting to Home Screen..."));
-				return true;
-			} else {
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, "Invalid Credentials. Try Again!!"));
-				return false;
-			}
-		}
-	}
+	
 	public void createNewAccount(Scanner scanner) {
-		// TODO Auto-generated method stub
+		
 		
 		String[] userInput = new String[4];
 		double amountInput = 0.00;
@@ -305,7 +183,7 @@ public class DollarsBankController {
 			switch(counter) {
 				//Customer Name
 				case 0:
-					ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.CYAN, "Customer Name:"));
+					ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.CYAN, "Customer Name:"));
 					//standard input logic
 					try {
 						userInput[counter] = InputParserUtil.parseString(scanner.nextLine());
@@ -316,7 +194,7 @@ public class DollarsBankController {
 				
 				//Contact Number
 				case 1:
-					ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.CYAN, "Customer Contact Number:"));
+					ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.CYAN, "Customer Contact Number:"));
 					//standard input logic & Regex
 					try {
 						userInput[counter] = InputParserUtil.parseString(scanner.nextLine());
@@ -328,7 +206,7 @@ public class DollarsBankController {
 				
 				//Username / User-Id
 				case 2:
-					ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.CYAN, "User Id:"));
+					ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.CYAN, "User Id:"));
 					//standard input logic
 					try {
 						userInput[counter] = InputParserUtil.parseString(scanner.nextLine());
@@ -339,7 +217,7 @@ public class DollarsBankController {
 				
 				//Password
 				case 3:
-					ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.CYAN, "Password: \n"
+					ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.CYAN, "Password: \n"
 							+ "- At least 8 chracters with one or more: uppercase letter, lowercase letter, special character, and number. -"));
 					//standard input logic & Regex
 					try {
@@ -352,7 +230,7 @@ public class DollarsBankController {
 				
 				//Initial Deposit
 				case 4:
-					ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.CYAN, "Initial Deposit Amount:"));
+					ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.CYAN, "Initial Deposit Amount:"));
 					//double input logic
 					try {
 						amountInput = InputParserUtil.parseDouble(scanner.nextLine());
@@ -366,37 +244,179 @@ public class DollarsBankController {
 		
 		
 		if (encounterdError) {
-			ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, "There was an error with your inputs."));
-			ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, "Returning to Welcome Screen..."));
+			ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, "There was an error with your inputs."));
+			ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, "Returning to Welcome Screen..."));
 		} else {
 			if (createUser(userInput[2], userInput[3], userInput[0], userInput[1], amountInput)) {
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.GREEN, "Successfully created new account!"));
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.GREEN, "Please login on the Welcome screen."));
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.GREEN, "Successfully created new account!"));
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.GREEN, "Please login on the Welcome screen."));
 			} else {
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, "UserId already taken! Please try again."));
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, "Returning to Welcome Screen..."));
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, "UserId already taken! Please try again."));
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, "Returning to Welcome Screen..."));
 			}
 		}
 	}
-	public int welcomeScreen(Scanner scanner) {
-		// TODO Auto-generated method stub
-		ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.GREEN, "Enter Choice (1, 2, or 3):"));
+
+	
+	public boolean loginScreen(Scanner scanner) {
 		
+
+		//temp variables
+		boolean encounteredError = false;
+		String userId = null, password = null;
+
+		//takes userId input
+		ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.CYAN, "User Id:"));
+		try {
+			userId = InputParserUtil.parseString(scanner.nextLine());
+		} catch (Exception e) {
+			encounteredError = true;
+		}
+
+		//checks for error, then takes password input if no errors
+		if (!encounteredError) {
+			ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.CYAN, "Password:"));
+			try {
+				password = InputParserUtil.parseString(scanner.nextLine());
+			} catch (Exception e) {
+				encounteredError = true;
+			}
+		}
 		
+		//checks for any errors, then attempts to login user or return to welcome screen
+		if (encounteredError) {
+			ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, "There was an error with your inputs."));
+			ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, "Returning to Welcome Screen..."));
+			return false;
+		} else {
+			if (attemptLogin(userId, password)) {
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.GREEN, "Successfully logged in!"));
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.GREEN, "Redirecting to Home Screen..."));
+				return true;
+			} else {
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, "Invalid Credentials. Try Again!!"));
+				return false;
+			}
+		}
+	}
+
+	
+	public int mainScreen(Scanner scanner) {
+		
+		ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.GREEN, "Enter Choice (1, 2, 3, 4, 5, or 6):"));
+		
+		//checks input
 		int userInput;
 		try {
 			userInput = InputParserUtil.parseInt(scanner.nextLine());
 		} catch (Exception e) {
-			ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, "Bad Input! Restarting Welcome Screen."));
+			ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, "Bad Input! Restarting Home Screen."));
 			userInput = 0;
 		}
 		
 		return userInput;
 	}
 
+	
+	public void depositAmount(Scanner scanner) {
+		
+		ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.CYAN, "Amount to be Deposited:"));
+		
+		//checks input
+		boolean encounteredError = false;
+		double userInput = 0.00;
+		try {
+			userInput = InputParserUtil.parseDouble(scanner.nextLine());
+		} catch (Exception e) {
+			ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, "Bad Input! Returning to Home Screen..."));
+			encounteredError = true;
+		}
+		
+		//logic
+		if (!encounteredError) {
+			addDeposit(userInput);
+			ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.GREEN, "Deposited " + userInput + " into your account!"));
+		}
+	}
 
+	
+	public void withdrawAmount(Scanner scanner) {
+		
+		ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.CYAN, "Amount to be Deposited:"));
+		
+		//checks input
+		boolean encounteredError = false;
+		double userInput = 0.00;
+		try {
+			userInput = InputParserUtil.parseDouble(scanner.nextLine());
+		} catch (Exception e) {
+			ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, "Bad Input! Returning to Home Screen..."));
+			encounteredError = true;
+		}
+		
+		//logic
+		if (!encounteredError) {
+			try {
+				subtractWithdrawal(userInput);
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.GREEN, "Withdrew " + userInput + " from your account!"));
+			} catch (Exception e) {
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, e.getMessage()));
+			}
+		}
+	}
+
+	
+	public void fundsTransfer(Scanner scanner) {
+		
+		ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.CYAN, "Enter UserId of User to transfer funds to:"));
+		
+		
+		//sets up variables
+		String transferUserId = null;
+		double amount = 0.00;
+		boolean encounteredError = false;
+		
+		
+		//tests input
+		try {
+			transferUserId = InputParserUtil.parseString(scanner.nextLine());
+		} catch(Exception e) {
+			ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, "Bad Input for the other user's id!"));
+			encounteredError = true;
+		}
+		
+		
+		//takes second input if no errors already
+		if (!encounteredError) {
+			ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.CYAN, "Enter ammount to transfer:"));
+			try {
+				amount = InputParserUtil.parseDouble(scanner.nextLine());
+			} catch(Exception e) {
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, "Bad Input for the amount to transfer!"));
+				encounteredError = true;
+			}
+		}
+		
+		
+		//checks for any errors, then attempts to login user or return to welcome screen
+		if (!encounteredError) {
+			try {
+				attemptTransfer(transferUserId, amount);
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.GREEN, "Successfully transfered funds!"));
+			} catch (Exception e) {
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, e.getMessage()));
+			}
+		}
+	}
+
+	
+	public void recentTransactions(int numOfTransactions) {
+		ConsoleUtil.printStatement(uView.showLastTransactions(currentUser, numOfTransactions));
+	}
+
+	
 	public void getUserDetails() {
-		userView.getUserDetails(currentUser);
+		ConsoleUtil.printStatement(uView.getUserDetails(currentUser));
 	}
 	
 }

@@ -23,50 +23,50 @@ public class DollarsBankApplication {
 	
 	// Menu Screens:
 	private static void welcomeScreen(Scanner scanner) {
-		view.welcomeScreen();
+		ConsoleUtil.printStatement(view.welcomeScreen());
 		int userInput = controller.welcomeScreen(scanner);
 		
 		switch (userInput) {
 			case 1:
 				createNewAccount(scanner);
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.BLACK, ""));
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.BLACK, ""));
 				welcomeScreen(scanner);
 				break;
 			case 2:
 				loginScreen(scanner);
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.BLACK, ""));
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.BLACK, ""));
 				welcomeScreen(scanner);
 				break;
 			case 3:
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.BLACK, ""));
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.GREEN, "Thank You for using Dollars Bank!"));
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.BLACK, ""));
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.GREEN, "Thank You for using Dollars Bank!"));
 				break;
 			
 			//case 0 is for an input-type error, while default is for just a bad input
 			case 0:
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.BLACK, ""));
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.BLACK, ""));
 				welcomeScreen(scanner);
 			default:
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, "No option matching that input, Reseting Welcome Screen."));
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.BLACK, ""));
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, "No option matching that input, Reseting Welcome Screen."));
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.BLACK, ""));
 				welcomeScreen(scanner);
 		}
 	}
 	
 	private static void createNewAccount(Scanner scanner) {
-		view.createNewAccount();
+		ConsoleUtil.printStatement(view.createNewAccount());
 		controller.createNewAccount(scanner);
 	}
 
 	private static void loginScreen(Scanner scanner) {
-		view.loginScreen();
+		ConsoleUtil.printStatement(view.loginScreen());
 		if (controller.loginScreen(scanner)) {
 			mainScreen(scanner);
 		}
 	}
 	
 	private static void mainScreen(Scanner scanner) {
-		view.mainScreen();
+		ConsoleUtil.printStatement(view.mainScreen());
 		int userInput = controller.mainScreen(scanner);
 
 		
@@ -98,42 +98,42 @@ public class DollarsBankApplication {
 				
 			//case 0 is for an input-type error, while default is for just a bad input
 			case 0:
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.BLACK, ""));
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.BLACK, ""));
 				welcomeScreen(scanner);
 			default:
-				ConsoleUtil.printStatement(ColorUtil.combineAnsi(ANSI_FONT_COLOR.RED, "No option matching that input, restarting Home Screen..."));
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, "No option matching that input, restarting Home Screen..."));
 				mainScreen(scanner);
 		}
 	}
 	
 	private static void depositAmount(Scanner scanner) {
-		view.depositAmount();
+		ConsoleUtil.printStatement(view.depositAmount());
 		controller.depositAmount(scanner);
 	}
 	
 	private static void withdrawAmount(Scanner scanner) {
-		view.withdrawAmount();
+		ConsoleUtil.printStatement(view.withdrawAmount());
 		controller.withdrawAmount(scanner);
 	}
 	
 	private static void fundsTransfer(Scanner scanner) {
-		view.fundsTransfer();
+		ConsoleUtil.printStatement(view.fundsTransfer());
 		controller.fundsTransfer(scanner);
 	}
 	
 	private static void recentTransactions(Scanner scanner) {
-		view.recentTransactions();
+		ConsoleUtil.printStatement(view.recentTransactions());
 		controller.recentTransactions(5);
 	}
 	
 	private static void displayInformation(Scanner scanner) {
-		view.displayInformation();
+		ConsoleUtil.printStatement(view.displayInformation());
 		controller.getUserDetails();
 	}
 	
 	private static void signOut(Scanner scanner) {
 		controller.signOut();
-		view.signOut();
+		ConsoleUtil.printStatement(view.signOut());
 	}
 
 }
