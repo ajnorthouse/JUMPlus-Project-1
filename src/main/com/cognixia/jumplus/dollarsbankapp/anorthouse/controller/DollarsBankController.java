@@ -11,7 +11,7 @@ import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.RegexUtil;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.UserView;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil.ANSI_FONT_COLOR;
 
-
+//TODO - JavaDoc description
 public class DollarsBankController {
 	
 	static ArrayList<User> users = new ArrayList<User>();
@@ -21,7 +21,7 @@ public class DollarsBankController {
 	
 	
 	// account methods
-	
+	//TODO - JavaDoc description
 	public boolean attemptLogin(String userId, String password) {
 		
 		//for loop to iterate over all users
@@ -44,11 +44,11 @@ public class DollarsBankController {
 		
 		return false;
 	}
-	
+	//TODO - JavaDoc description
 	public void signOut() {
 		this.currentUser = null;
 	}
-	
+	//TODO - JavaDoc description
 	public boolean createUser(String userId, String password, String name, String contactNumber, double balance) {
 		
 		//first checks for any matching userId
@@ -68,7 +68,7 @@ public class DollarsBankController {
 	
 	
 	// deposit methods
-	
+	//TODO - JavaDoc description
 	public void addDeposit(double userInput) {
 		double balance = uController.getBalance(currentUser);
 		uController.setBalance(currentUser, balance + userInput);
@@ -80,7 +80,7 @@ public class DollarsBankController {
 	
 	
 	// withdrawal methods
-	
+	//TODO - JavaDoc description
 	public void subtractWithdrawal(double userInput) throws Exception {
 		double balance = uController.getBalance(currentUser);
 		
@@ -89,6 +89,9 @@ public class DollarsBankController {
 			throw new Exception("Not enough funds!");
 		}
 		
+		//subtracts withdrawal
+		uController.setBalance(currentUser, balance - userInput);
+		
 		//update log
 		String message = "Withdrew $" + userInput + " to bring Balance to: $" + balance + ".";
 		uController.updateLog(currentUser, message);
@@ -96,7 +99,7 @@ public class DollarsBankController {
 	
 	
 	// transfer methods
-	
+	//TODO - JavaDoc description
 	public void attemptTransfer(String transferUserId, double amount) throws Exception {
 		//temp user for the transfer
 		User tempUser = null;
@@ -125,36 +128,39 @@ public class DollarsBankController {
 		transferWithdrawal(currentUser, uController.getUsername(tempUser), amount);
 		transferDeposit(tempUser, uController.getUsername(currentUser), amount);
 	}
-	
+	//TODO - JavaDoc description
 	public void transferDeposit(User user, String transferUserId, double userInput) {
-		double balance = uController.getBalance(currentUser);
-		uController.setBalance(currentUser, balance + userInput);
+		double balance = uController.getBalance(user);
+		uController.setBalance(user, balance + userInput);
 		
 		//update log
-		String message = "Deposited $" + userInput + " to bring Balance to: $" + balance + ".";
-		uController.updateLog(currentUser, message);
+		String message = "Received $" + userInput + " from " + transferUserId + ", Balance now: $" + balance + ".";
+		uController.updateLog(user, message);
 	}
-	
+	//TODO - JavaDoc description
 	public void transferWithdrawal(User user, String transferUserId, double userInput) throws Exception {
-		double balance = uController.getBalance(currentUser);
+		double balance = uController.getBalance(user);
 		
 		//checks if the account has enough funds
 		if (balance < userInput) {
 			throw new Exception("Not enough funds!");
 		}
 		
+		//subtracts withdrawal
+		uController.setBalance(user, balance - userInput);
+		
 		//update log
 		String message = "Transfered $" + userInput + " to " + transferUserId + ", Balance now: $" + balance + ".";
-		uController.updateLog(currentUser, message);
+		uController.updateLog(user, message);
 	}
 
 
 	
 	
 	//Screen Methods
-	
+	//TODO - JavaDoc description
 	public int welcomeScreen(Scanner scanner) {
-		
+		// TODO Auto-generated method stub
 		ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.GREEN, "Enter Choice (1, 2, or 3):"));
 		
 		
@@ -169,9 +175,9 @@ public class DollarsBankController {
 		return userInput;
 	}
 
-	
+	//TODO - JavaDoc description
 	public void createNewAccount(Scanner scanner) {
-		
+		// TODO Auto-generated method stub
 		
 		String[] userInput = new String[4];
 		double amountInput = 0.00;
@@ -257,9 +263,9 @@ public class DollarsBankController {
 		}
 	}
 
-	
+	//TODO - JavaDoc description
 	public boolean loginScreen(Scanner scanner) {
-		
+		// TODO Auto-generated method stub
 
 		//temp variables
 		boolean encounteredError = false;
@@ -300,9 +306,9 @@ public class DollarsBankController {
 		}
 	}
 
-	
+	//TODO - JavaDoc description
 	public int mainScreen(Scanner scanner) {
-		
+		// TODO Auto-generated method stub
 		ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.GREEN, "Enter Choice (1, 2, 3, 4, 5, or 6):"));
 		
 		//checks input
@@ -317,9 +323,9 @@ public class DollarsBankController {
 		return userInput;
 	}
 
-	
+	//TODO - JavaDoc description
 	public void depositAmount(Scanner scanner) {
-		
+		// TODO Auto-generated method stub
 		ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.CYAN, "Amount to be Deposited:"));
 		
 		//checks input
@@ -339,10 +345,10 @@ public class DollarsBankController {
 		}
 	}
 
-	
+	//TODO - JavaDoc description
 	public void withdrawAmount(Scanner scanner) {
-		
-		ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.CYAN, "Amount to be Deposited:"));
+		// TODO Auto-generated method stub
+		ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.CYAN, "Amount to be Withdrawn:"));
 		
 		//checks input
 		boolean encounteredError = false;
@@ -358,16 +364,16 @@ public class DollarsBankController {
 		if (!encounteredError) {
 			try {
 				subtractWithdrawal(userInput);
-				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.GREEN, "Withdrew " + userInput + " from your account!"));
+				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.GREEN, "Withdrew $" + userInput + " from your account!"));
 			} catch (Exception e) {
 				ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, e.getMessage()));
 			}
 		}
 	}
 
-	
+	//TODO - JavaDoc description
 	public void fundsTransfer(Scanner scanner) {
-		
+		// TODO Auto-generated method stub
 		ConsoleUtil.printStatement(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.CYAN, "Enter UserId of User to transfer funds to:"));
 		
 		
@@ -409,12 +415,12 @@ public class DollarsBankController {
 		}
 	}
 
-	
+	//TODO - JavaDoc description
 	public void recentTransactions(int numOfTransactions) {
 		ConsoleUtil.printStatement(uView.showLastTransactions(currentUser, numOfTransactions));
 	}
 
-	
+	//TODO - JavaDoc description
 	public void getUserDetails() {
 		ConsoleUtil.printStatement(uView.getUserDetails(currentUser));
 	}

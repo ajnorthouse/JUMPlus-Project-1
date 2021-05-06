@@ -4,15 +4,16 @@ import java.util.ArrayList;
 
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
 
-
+//TODO - JavaDoc description
 public class UserView {
 	
 	StringBuilder userString = new StringBuilder();
 	
 
-	
+	//TODO - JavaDoc description
 	//gets the user's details
 	public String getUserDetails(User user) {
+		//TODO - add color implementation
 		
 		//resets string builder
 		userString.setLength(0);
@@ -26,7 +27,7 @@ public class UserView {
 	}
 
 
-	
+	//TODO - JavaDoc description
 	public String showLastTransactions(User user, int numOfTransactions) {
 		//resets string builder
 		userString.setLength(0);

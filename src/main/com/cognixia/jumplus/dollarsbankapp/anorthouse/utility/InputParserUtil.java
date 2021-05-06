@@ -1,9 +1,9 @@
 package com.cognixia.jumplus.dollarsbankapp.anorthouse.utility;
 
-
+//TODO - JavaDoc description
 public class InputParserUtil {
 
-	
+	//TODO - JavaDoc description
 	public static int parseInt(String rawInput) throws Exception {
 		String tempString = rawInput;
 		int tempInt = 0;
@@ -27,7 +27,7 @@ public class InputParserUtil {
 	}
 
 
-	
+	//TODO - JavaDoc description
 	public static double parseDouble(String rawInput) throws Exception {
 		String tempString = rawInput;
 		double tempDouble = 0.00;
@@ -51,7 +51,7 @@ public class InputParserUtil {
 	}
 
 
-	
+	//TODO - JavaDoc description
 	public static String parseString(String rawInput) throws Exception {
 		String tempString = rawInput;
 		
@@ -73,7 +73,7 @@ public class InputParserUtil {
 	}
 	
 
-	
+	//TODO - JavaDoc description
 	public static String parseUsername(String rawInput) throws Exception {
 		rawInput = parseString(rawInput);
 		return rawInput.toLowerCase();

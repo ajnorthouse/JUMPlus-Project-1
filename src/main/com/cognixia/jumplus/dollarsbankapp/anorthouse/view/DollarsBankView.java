@@ -3,14 +3,14 @@ package com.cognixia.jumplus.dollarsbankapp.anorthouse.view;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil;
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil.ANSI_FONT_COLOR;
 
-
+//TODO - JavaDoc description
 public class DollarsBankView {
 	
 	private StringBuilder page = new StringBuilder();
 	private StringBuilder temp = new StringBuilder();
 
 
-	
+	//TODO - JavaDoc description
 	public String welcomeScreen() {
 		page.setLength(0);
 		temp.setLength(0);
@@ -30,7 +30,7 @@ public class DollarsBankView {
 	}
 
 	
-	
+	//TODO - JavaDoc description
 	public String createNewAccount() {
 		page.setLength(0);
 		page.append("\n");
@@ -41,7 +41,7 @@ public class DollarsBankView {
 	}
 
 	
-	
+	//TODO - JavaDoc description
 	public String loginScreen() {
 		page.setLength(0);
 		page.append("\n");
@@ -52,7 +52,7 @@ public class DollarsBankView {
 	}
 
 
-	
+	//TODO - JavaDoc description
 	public String mainScreen() {
 		page.setLength(0);
 		temp.setLength(0);
@@ -76,7 +76,7 @@ public class DollarsBankView {
 	}
 
 
-	
+	//TODO - JavaDoc description
 	public String depositAmount() {
 		page.setLength(0);
 		page.append("\n");
@@ -87,7 +87,7 @@ public class DollarsBankView {
 	}
 
 
-	
+	//TODO - JavaDoc description
 	public String withdrawAmount() {
 		page.setLength(0);
 		page.append("\n");
@@ -98,7 +98,7 @@ public class DollarsBankView {
 	}
 
 
-	
+	//TODO - JavaDoc description
 	public String fundsTransfer() {
 		page.setLength(0);
 		page.append("\n");
@@ -109,7 +109,7 @@ public class DollarsBankView {
 	}
 
 
-	
+	//TODO - JavaDoc description
 	public String recentTransactions() {
 		page.setLength(0);
 		page.append("\n");
@@ -120,7 +120,7 @@ public class DollarsBankView {
 	}
 
 
-	
+	//TODO - JavaDoc description
 	public String displayInformation() {
 		page.setLength(0);
 		page.append("\n");
@@ -131,7 +131,7 @@ public class DollarsBankView {
 	}
 	
 
-	
+	//TODO - JavaDoc description
 	public String signOut() {
 		page.setLength(0);
 		page.append(ColorUtil.combineAnsiFont(ANSI_FONT_COLOR.RED, "== Signing out... Thank you! ==\n"));

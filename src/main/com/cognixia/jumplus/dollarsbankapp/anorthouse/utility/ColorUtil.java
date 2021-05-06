@@ -11,7 +11,7 @@ package com.cognixia.jumplus.dollarsbankapp.anorthouse.utility;
  */
 public class ColorUtil {
 
-	//
+	//TODO - description to JavaDoc
 	//Basic text ("foreground") fonts
 	public static enum ANSI_FONT_COLOR {
 		BLACK("\u001B[30m"),
@@ -39,7 +39,7 @@ public class ColorUtil {
 	}
 
 	
-	//
+	//TODO - description to JavaDoc
 	//Basic background fonts
 	public static enum ANSI_BACKGROUND_COLOR {
 		BLACK("\u001B[40m"),
@@ -67,25 +67,25 @@ public class ColorUtil {
 	}
 
 
-	//
+	//TODO - description to JavaDoc
 	//Reset code for ANSI
 	public static String ANSI_RESET = "\u001B[0m";
 	
 	
-	//
+	//TODO - description to JavaDoc
 	public static String combineAnsi(ANSI_FONT_COLOR font, ANSI_BACKGROUND_COLOR background, String message) {
 		return (font.value + background.value + message + ANSI_RESET);
 	}
 
 
-	//
+	//TODO - description to JavaDoc
 	//Basic implementation of combining ANSI and a string to console
 	public static String combineAnsiFont(ANSI_FONT_COLOR color, String message) {
 		return (color.value + message + ANSI_RESET);
 	}
 	
 
-	//
+	//TODO - description to JavaDoc
 	public static String combineAnsiBackGround(ANSI_BACKGROUND_COLOR color, String message) {
 		return (color.value + message + ANSI_RESET);
 	}
