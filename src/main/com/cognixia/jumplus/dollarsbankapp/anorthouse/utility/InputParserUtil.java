@@ -1,14 +1,9 @@
 package com.cognixia.jumplus.dollarsbankapp.anorthouse.utility;
 
+//TODO - JavaDoc description
 public class InputParserUtil {
 
-	//TODO add description
-	//TODO username parser
-
-	//TODO add description
-	//TODO password parser
-	
-	//TODO add description
+	//TODO - JavaDoc description
 	public static int parseInt(String rawInput) throws Exception {
 		String tempString = rawInput;
 		int tempInt = 0;
@@ -18,9 +13,9 @@ public class InputParserUtil {
 			tempString = tempString.trim();
 			tempInt = Integer.parseInt(tempString);
 
-			//then checks for non=negative
+			//then checks for non-negative
 			if (tempInt < 0) {
-				throw new Exception();
+				throw new Exception("The number can't be negative!");
 			}
 		//throws generic exception to allow for caller to handle issue
 		} catch (Exception e) {
@@ -31,7 +26,8 @@ public class InputParserUtil {
 		return tempInt;
 	}
 
-	//TODO add description
+
+	//TODO - JavaDoc description
 	public static double parseDouble(String rawInput) throws Exception {
 		String tempString = rawInput;
 		double tempDouble = 0.00;
@@ -43,7 +39,7 @@ public class InputParserUtil {
 
 			//then checks for non=negative
 			if (tempDouble < 0.00) {
-				throw new Exception();
+				throw new Exception("The number can't be negative!");
 			}
 		//throws generic exception to allow for caller to handle issue
 		} catch (Exception e) {
@@ -54,7 +50,8 @@ public class InputParserUtil {
 		return tempDouble;
 	}
 
-	//TODO add description
+
+	//TODO - JavaDoc description
 	public static String parseString(String rawInput) throws Exception {
 		String tempString = rawInput;
 		
@@ -73,6 +70,13 @@ public class InputParserUtil {
 		
 		//returns parsed input
 		return tempString;
+	}
+	
+
+	//TODO - JavaDoc description
+	public static String parseUsername(String rawInput) throws Exception {
+		rawInput = parseString(rawInput);
+		return rawInput.toLowerCase();
 	}
 	
 }

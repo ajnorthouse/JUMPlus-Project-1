@@ -8,28 +8,27 @@
 Implement more thorough testing.
 
 ### Small Additions:
-- [ ] Utility
-	- [ ] InputParserUtil
-		- [ ] Check Username
-		- [ ] Check Password
-	- [ ] RegexCheckerUtil
-		- [ ] Check username
+- [x] Utility
+	- [x] InputParserUtil
+		- [x] Check Username
+	- [x] RegexCheckerUtil
+		- [x] Check username
 
 ### Testing:
-- [ ] Controller
-	- [ ] Bank Controller Testing
+- [x] Controller
+	- [x] Bank Controller Testing
 	- Remove unused methods
 	- Create tests for the new methods
 
-- [ ] Utility
-	- [ ] ColorUtil
+- [x] Utility
+	- [x] ColorUtil
 		- test various colors
 
-- [ ] View
-	- [ ] UserView
+- [x] View
+	- [x] UserView
 		- test user details string
 		- test log string
-	- [ ] DollarsBankView
+	- [x] DollarsBankView
 		- test menu strings are correct
 
 

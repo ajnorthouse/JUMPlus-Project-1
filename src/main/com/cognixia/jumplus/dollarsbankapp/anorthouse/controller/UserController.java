@@ -6,64 +6,78 @@ import java.util.ArrayList;
 
 import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
 
+//TODO - JavaDoc description
 public class UserController {
 	
 	// id methods
+	//TODO - JavaDoc description
 	public Long getId(User user) {
 		return user.getId();
 	}
 	
 	
 	// username methods
-	public static String getUsername(User user) {
+	//TODO - JavaDoc description
+	public String getUsername(User user) {
 		return user.getUsername();
 	}
-	public static void setUsername(User user, String username) {
+	//TODO - JavaDoc description
+	public void setUsername(User user, String username) {
 		user.setUsername(username);
 	}
 	
 	
 	// password methods
-	public static String getPassword(User user) {
+	//TODO - JavaDoc description
+	public String getPassword(User user) {
 		return user.getPassword();
 	}
-	public static void setPassword(User user, String password) {
+	//TODO - JavaDoc description
+	public void setPassword(User user, String password) {
 		user.setPassword(password);
 	}
 	
 	
 	// name methods
-	public static String getName(User user) {
+	//TODO - JavaDoc description
+	public String getName(User user) {
 		return user.getName();
 	}
-	public static void setName(User user, String name) {
+	//TODO - JavaDoc description
+	public void setName(User user, String name) {
 		user.setName(name);
 	}
 	
 	
 	// contactNumber methods
-	public static String getContactNumber(User user) {
+	//TODO - JavaDoc description
+	public String getContactNumber(User user) {
 		return user.getContactNumber();
 	}
-	public static void setContactNumber(User user, String contactNumber) {
+	//TODO - JavaDoc description
+	public void setContactNumber(User user, String contactNumber) {
 		user.setContactNumber(contactNumber);
 	}
 	
 
 	// balance methods
-	public static double getBalance(User user) {
+	//TODO - JavaDoc description
+	public double getBalance(User user) {
 		return user.getBalance();
 	}
-	public static void setBalance(User user, double balance) {
+	//TODO - JavaDoc description
+	public void setBalance(User user, double balance) {
 		user.setBalance(balance);
 	}
 	
 
 	// log methods
-	public static ArrayList<String> getUserLog(User user) {
+	//TODO - JavaDoc description
+	public ArrayList<String> getUserLog(User user) {
 		return user.getLog();
 	}
-	public static void setUserLog(User user, ArrayList<String> log) {
+	//TODO - JavaDoc description
+	public void setUserLog(User user, ArrayList<String> log) {
 		user.setLog(log);
 	}
 	/**
@@ -71,7 +85,8 @@ public class UserController {
 	 * @param user
 	 * @param message
 	 */
-	public static void updateLog(User user, String message) {
+	//TODO - JavaDoc description
+	public String updateLog(User user, String message) {
 		//generates date:
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, MMM dd yyyy - HH:mm:ss z"); 
 		String date = (ZonedDateTime.now().format(formatter) + "\n");
@@ -80,6 +95,7 @@ public class UserController {
 		ArrayList<String> tempLog = user.getLog();
 		tempLog.add(date + message);
 		user.setLog(tempLog);
+		return (date + message);
 	}
 
 }
