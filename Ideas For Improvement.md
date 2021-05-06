@@ -4,37 +4,6 @@
 
 
 ---
-## v1.3 - Testing
-Implement more thorough testing.
-
-### Small Additions:
-- [x] Utility
-	- [x] InputParserUtil
-		- [x] Check Username
-	- [x] RegexCheckerUtil
-		- [x] Check username
-
-### Testing:
-- [x] Controller
-	- [x] Bank Controller Testing
-	- Remove unused methods
-	- Create tests for the new methods
-
-- [x] Utility
-	- [x] ColorUtil
-		- test various colors
-
-- [x] View
-	- [x] UserView
-		- test user details string
-		- test log string
-	- [x] DollarsBankView
-		- test menu strings are correct
-
-
-
-
----
 ## v1.4 - Improvements
 Usability improvements to make way for the next updates.
 
