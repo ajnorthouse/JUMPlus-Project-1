@@ -1,4 +1,4 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse.view;
+package com.cognixia.jumplus.project1.anorthouse.view;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,6 +6,8 @@ import java.util.HashMap;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import com.cognixia.jumplus.project1.anorthouse.view.DollarsBankView;
 
 class DollarsBankViewTest {
 	

@@ -1,10 +1,10 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse.controller;
+package com.cognixia.jumplus.project1.anorthouse.controller;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
+import com.cognixia.jumplus.project1.anorthouse.model.User;
 
 //TODO - JavaDoc description
 public class UserController {

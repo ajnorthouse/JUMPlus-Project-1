@@ -1,15 +1,15 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse.controller;
+package com.cognixia.jumplus.project1.anorthouse.controller;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ConsoleUtil;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.InputParserUtil;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.RegexUtil;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.UserView;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil.ANSI_FONT_COLOR;
+import com.cognixia.jumplus.project1.anorthouse.model.User;
+import com.cognixia.jumplus.project1.anorthouse.utility.ColorUtil;
+import com.cognixia.jumplus.project1.anorthouse.utility.ConsoleUtil;
+import com.cognixia.jumplus.project1.anorthouse.utility.InputParserUtil;
+import com.cognixia.jumplus.project1.anorthouse.utility.RegexUtil;
+import com.cognixia.jumplus.project1.anorthouse.utility.ColorUtil.ANSI_FONT_COLOR;
+import com.cognixia.jumplus.project1.anorthouse.view.UserView;
 
 //TODO - JavaDoc description
 public class DollarsBankController {

@@ -1,4 +1,4 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse.utility;
+package com.cognixia.jumplus.project1.anorthouse.utility;
 
 //TODO - JavaDoc description
 public class ConsoleUtil {

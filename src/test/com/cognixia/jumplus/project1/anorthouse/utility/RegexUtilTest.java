@@ -1,10 +1,12 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse.utility;
+package com.cognixia.jumplus.project1.anorthouse.utility;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
+import com.cognixia.jumplus.project1.anorthouse.utility.RegexUtil;
 
 @DisplayName("RegexUtil Tests")
 class RegexUtilTest {

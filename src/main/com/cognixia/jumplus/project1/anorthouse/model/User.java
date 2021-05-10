@@ -1,4 +1,4 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse.model;
+package com.cognixia.jumplus.project1.anorthouse.model;
 
 import java.util.ArrayList;
 

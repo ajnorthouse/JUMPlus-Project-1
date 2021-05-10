@@ -1,4 +1,4 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse.controller;
+package com.cognixia.jumplus.project1.anorthouse.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,7 +11,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
+import com.cognixia.jumplus.project1.anorthouse.controller.DollarsBankController;
+import com.cognixia.jumplus.project1.anorthouse.model.User;
 
 @DisplayName("DollarsBankController Tests")
 class DollarsBankControllerTest {

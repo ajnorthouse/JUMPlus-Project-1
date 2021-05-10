@@ -1,7 +1,7 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse.view;
+package com.cognixia.jumplus.project1.anorthouse.view;
 
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil.ANSI_FONT_COLOR;
+import com.cognixia.jumplus.project1.anorthouse.utility.ColorUtil;
+import com.cognixia.jumplus.project1.anorthouse.utility.ColorUtil.ANSI_FONT_COLOR;
 
 //TODO - JavaDoc description
 public class DollarsBankView {

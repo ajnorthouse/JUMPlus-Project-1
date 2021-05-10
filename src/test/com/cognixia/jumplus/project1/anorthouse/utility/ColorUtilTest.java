@@ -1,4 +1,4 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse.utility;
+package com.cognixia.jumplus.project1.anorthouse.utility;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,8 +6,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil.ANSI_BACKGROUND_COLOR;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil.ANSI_FONT_COLOR;
+import com.cognixia.jumplus.project1.anorthouse.utility.ColorUtil;
+import com.cognixia.jumplus.project1.anorthouse.utility.ColorUtil.ANSI_BACKGROUND_COLOR;
+import com.cognixia.jumplus.project1.anorthouse.utility.ColorUtil.ANSI_FONT_COLOR;
 
 @DisplayName("ColorUtil Tests")
 class ColorUtilTest {

@@ -1,12 +1,12 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse.application;
+package com.cognixia.jumplus.project1.anorthouse.application;
 
 import java.util.Scanner;
 
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.controller.DollarsBankController;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil.ANSI_FONT_COLOR;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ColorUtil;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.utility.ConsoleUtil;
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.view.DollarsBankView;
+import com.cognixia.jumplus.project1.anorthouse.controller.DollarsBankController;
+import com.cognixia.jumplus.project1.anorthouse.utility.ColorUtil;
+import com.cognixia.jumplus.project1.anorthouse.utility.ConsoleUtil;
+import com.cognixia.jumplus.project1.anorthouse.utility.ColorUtil.ANSI_FONT_COLOR;
+import com.cognixia.jumplus.project1.anorthouse.view.DollarsBankView;
 
 public class DollarsBankApplication {
 	

@@ -1,8 +1,8 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse.view;
+package com.cognixia.jumplus.project1.anorthouse.view;
 
 import java.util.ArrayList;
 
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
+import com.cognixia.jumplus.project1.anorthouse.model.User;
 
 //TODO - JavaDoc description
 public class UserView {

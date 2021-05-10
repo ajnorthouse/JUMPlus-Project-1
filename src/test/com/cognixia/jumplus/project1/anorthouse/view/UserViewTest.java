@@ -1,4 +1,4 @@
-package com.cognixia.jumplus.dollarsbankapp.anorthouse.view;
+package com.cognixia.jumplus.project1.anorthouse.view;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,7 +8,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import com.cognixia.jumplus.dollarsbankapp.anorthouse.model.User;
+import com.cognixia.jumplus.project1.anorthouse.model.User;
+import com.cognixia.jumplus.project1.anorthouse.view.UserView;
 
 @DisplayName("UserView Tests")
 class UserViewTest {
